@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environments
+venv/
+.venv/
+qwen_env/
+
+# HuggingFace
+.cache/
+
+# Large model files
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# OS
+.DS_Store
+
+data/CulturalVQA/
+*.save
+*.save.*
