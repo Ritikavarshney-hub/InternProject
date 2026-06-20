@@ -1,0 +1,32 @@
+============================================================
+PHASE 1 ATTRIBUTION ANALYSIS SUMMARY
+============================================================
+
+Occlusion map coverage:
+  clip: 266 images
+  llava: 265 images
+  qwen2vl: 259 images
+  internvl2: 265 images
+
+Mean attribution signal (max_score) per model:
+  clip: 0.1561 ± 0.1491
+  internvl2: 0.0783 ± 0.1226
+  llava: 0.1143 ± 0.1386
+  qwen2vl: 0.1090 ± 0.1387
+
+Weakest facet (lowest mean max_score) per model:
+  clip: clothing (0.1350)
+  llava: clothing (0.0863)
+  qwen2vl: traditions (0.0760)
+  internvl2: clothing (0.0546)
+
+Cross-model occlusion agreement (mean Spearman ρ):
+  clip_vs_llava: ρ = 0.072
+  clip_vs_qwen2vl: ρ = nan
+  clip_vs_internvl2: ρ = 0.048
+  llava_vs_qwen2vl: ρ = nan
+  llava_vs_internvl2: ρ = 0.064
+  qwen2vl_vs_internvl2: ρ = nan
+
+Outputs saved to: /DATA/bt24eee096/cultural_vlm/results/analysis
+============================================================

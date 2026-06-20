@@ -1,0 +1,33 @@
+category,category_name,model,n_images,cas_k10,cas_k20,cas_k30,n_correct_orig
+A,National Symbols,clip,17,0.2353,0.2941,0.3529,14
+B,Clothing / Dress,clip,33,0.4545,0.5455,0.6061,24
+C,Architecture,clip,16,0.375,0.4375,0.5,10
+D,Food / Objects,clip,89,0.5281,0.5393,0.573,51
+E,Script / Text,clip,7,0.7143,0.5714,0.5714,5
+F,Ritual / Festival,clip,31,0.4839,0.5484,0.6129,19
+G,Natural Landscape,clip,23,0.4348,0.5652,0.5652,11
+H,Appearance,clip,50,0.82,0.8,0.8,24
+A,National Symbols,llava,17,0.3529,0.4706,0.4706,12
+B,Clothing / Dress,llava,33,0.4848,0.4848,0.4848,17
+C,Architecture,llava,16,0.3125,0.25,0.3125,10
+D,Food / Objects,llava,89,0.7978,0.7978,0.809,22
+E,Script / Text,llava,7,0.8571,0.8571,1.0,2
+F,Ritual / Festival,llava,31,0.5161,0.4516,0.5161,18
+G,Natural Landscape,llava,23,0.6522,0.7826,0.6957,6
+H,Appearance,llava,49,0.8163,0.8367,0.8163,12
+A,National Symbols,qwen2vl,15,0.2,0.2,0.2,14
+B,Clothing / Dress,qwen2vl,33,0.4545,0.4242,0.4545,25
+C,Architecture,qwen2vl,16,0.25,0.25,0.25,12
+D,Food / Objects,qwen2vl,88,0.5341,0.5227,0.5795,52
+E,Script / Text,qwen2vl,7,0.5714,0.5714,0.5714,3
+F,Ritual / Festival,qwen2vl,29,0.3793,0.4138,0.4138,19
+G,Natural Landscape,qwen2vl,22,0.5909,0.5455,0.5909,14
+H,Appearance,qwen2vl,49,0.6327,0.7551,0.7143,22
+A,National Symbols,internvl2,17,0.2941,0.4118,0.3529,12
+B,Clothing / Dress,internvl2,33,0.4545,0.4242,0.4242,19
+C,Architecture,internvl2,16,0.3125,0.3125,0.3125,9
+D,Food / Objects,internvl2,89,0.6854,0.7191,0.7303,33
+E,Script / Text,internvl2,7,0.7143,0.5714,0.5714,5
+F,Ritual / Festival,internvl2,31,0.3226,0.3548,0.3548,21
+G,Natural Landscape,internvl2,23,0.7391,0.6957,0.7391,7
+H,Appearance,internvl2,49,0.6735,0.7755,0.7347,20

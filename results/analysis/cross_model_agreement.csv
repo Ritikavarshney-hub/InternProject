@@ -1,0 +1,7 @@
+pair,n,mean_rho,std_rho,median_rho
+clip_vs_llava,265,0.0724,0.3011,0.0647
+clip_vs_qwen2vl,259,,,
+clip_vs_internvl2,265,0.0481,0.2722,0.0202
+llava_vs_qwen2vl,259,,,
+llava_vs_internvl2,265,0.0637,0.2696,0.0763
+qwen2vl_vs_internvl2,259,,,

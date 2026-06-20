@@ -1,5 +1,5 @@
 correct,max_score,entropy,model
-False,0.13840352,4.1170926,clip
-True,0.15154283,4.0029583,clip
+False,0.1578235,3.4783401,clip
+True,0.17670667,3.3730512,clip
 False,0.09594089,3.7789648,llava
 True,0.14058031,3.4920084,llava

@@ -453,11 +453,11 @@ def load_image_from_dataset(u_id: str) -> Image.Image:
 
 
 def load_scores(u_id: str, model: str, fill: str = "mean") -> np.ndarray:
-    path = os.path.join(OCCLUSION_DIR, f"{u_id}_{model}_{fill}.npy")
+    path = os.path.join(OCCLUSION_DIR, f"{u_id}_{model}_{fill}_7x7.npy")
     if not os.path.exists(path):
         raise FileNotFoundError(
             f"Heatmap not found: {path}\n"
-            f"Run occlusion.py --model {model} --fill {fill} first."
+            f"Run occlusion.py --model {model} --fill {fill} --grid-size 7 first."
         )
     return np.load(path)
 
@@ -474,11 +474,11 @@ def visualise_single(u_id: str, model: str, fill: str):
 
     show_heatmap(
         image, scores, title=title,
-        save_path=os.path.join(VIZ_DIR, f"{u_id}_{model}_{fill}_overlay.png"),
+        save_path=os.path.join(VIZ_DIR, f"{u_id}_{model}_{fill}_7x7_overlay.png"),
     )
     show_heatmap_grid(
         image, scores, title=title,
-        save_path=os.path.join(VIZ_DIR, f"{u_id}_{model}_{fill}_grid.png"),
+        save_path=os.path.join(VIZ_DIR, f"{u_id}_{model}_{fill}_7x7_grid.png"),
     )
 
 
@@ -518,6 +518,28 @@ def visualise_fill_comparison(u_id: str, model: str):
         save_path=os.path.join(VIZ_DIR, f"{u_id}_{model}_fill_comparison.png"),
     )
 
+def visualise_all(model: str, fill: str):
+    os.makedirs(VIZ_DIR, exist_ok=True)
+
+    suffix = f"_{model}_{fill}_7x7.npy"
+
+    files = [
+        f for f in os.listdir(OCCLUSION_DIR)
+        if f.endswith(suffix)
+    ]
+
+    print(f"Found {len(files)} heatmaps")
+
+    for idx, fname in enumerate(files):
+        u_id = fname[:-len(suffix)]
+
+        try:
+            visualise_single(u_id, model, fill)
+        except Exception as e:
+            print(f"[skip] {u_id}: {e}")
+
+        if (idx + 1) % 20 == 0:
+            print(f"Processed {idx + 1}/{len(files)}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Milestone 3b — Heatmap Visualisation")
@@ -525,10 +547,13 @@ if __name__ == "__main__":
     parser.add_argument("--model",         type=str,  default="clip",  help="Model name (clip|llava|qwen2vl|internvl2).")
     parser.add_argument("--fill",          type=str,  default="mean",  help="Fill type (mean|black|noise).")
     parser.add_argument("--pilot",         action="store_true",        help="Visualise all 20 pilot images.")
+    parser.add_argument("--all",action="store_true",help="Visualise all available heatmaps.")
     parser.add_argument("--compare_fills", action="store_true",        help="Side-by-side comparison of all three fill types.")
     args = parser.parse_args()
 
-    if args.pilot:
+    if args.all:
+        visualise_all(args.model, args.fill)
+    elif args.pilot:
         visualise_pilot(args.model, args.fill)
     elif args.compare_fills and args.u_id:
         visualise_fill_comparison(args.u_id, args.model)

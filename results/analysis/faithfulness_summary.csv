@@ -1,0 +1,2 @@
+model,n_images,mean_faithfulness,std_faithfulness,random_baseline,lift,pct_zero,parse_fail_rate
+llava,266,0.2293,0.2139,0.125,0.1043,0.406,0.0038
