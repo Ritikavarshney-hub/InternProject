@@ -1,0 +1,9 @@
+category,category_name,is_shortcut,n_images,peak_layer,peak_sim,mean_sim_l1,mean_sim_final
+F,Ritual / Festival,False,31,2,0.04738,0.04701,0.00917
+D,Food / Objects,False,89,3,0.05187,0.05157,0.01771
+H,Appearance,True,50,3,0.04426,0.04373,0.00839
+C,Architecture,False,16,4,0.05232,0.0519,0.01717
+G,Natural Landscape,False,23,4,0.04971,0.04924,0.00955
+B,Clothing / Dress,False,33,11,0.0282,0.02471,0.02397
+A,National Symbols,True,17,11,0.05164,0.0477,0.02516
+E,Script / Text,True,7,19,0.08266,0.07868,0.01887
