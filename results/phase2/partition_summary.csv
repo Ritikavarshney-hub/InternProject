@@ -1,0 +1,3 @@
+partition,categories,n_candidates,n_selected,mean_category_score,pct_label_confident,pct_correct_orig
+shortcut,"A, E, H",49,49,0.5654,0.6327,0.4286
+nuanced,"B, C, D, F",90,50,0.8965,1.0,0.5

@@ -1,0 +1,11 @@
+u_id,true_country,facet,category_primary,category_name,category_score,label_confident,pred_country_orig,correct_orig,changed_k20,category_score
+1192021a-598b-48bb-be52-9f576e627384,Rwanda,rituals,H,H_appearance,0.988627,True,Rwanda,True,True,0.988627
+6b0be593-f193-48ee-bdd8-8f8cc3da741a,Brazil,clothing,H,H_appearance,0.95029,True,USA,False,True,0.95029
+f12dd800-7905-428c-9690-28747601a795,Brazil,clothing,H,H_appearance,0.95029,True,USA,False,True,0.95029
+2a57f463-0a45-4852-9a58-acbf91395812,Rwanda,clothing,H,H_appearance,0.944511,True,Rwanda,True,True,0.944511
+a2ebb579-6a95-4ef6-90d3-7472f9739d27,Canada,traditions,H,H_appearance,0.889801,True,USA,False,True,0.889801
+7d6f190c-4df7-4306-a1e9-b87ed1e3087c,USA,rituals,A,A_national_symbols,0.886297,True,USA,True,True,0.886297
+4f04c1f6-a284-4219-9412-beacc222f51d,Canada,rituals,A,A_national_symbols,0.856681,True,Germany,False,True,0.856681
+2ffd117c-1a33-4b7a-a359-c3bb9ad35cec,Iran,clothing,E,E_script,0.785356,True,Iran,True,True,0.785356
+2b049977-6bfc-4a19-b59a-c9e2beffab94,Turkey,rituals,H,H_appearance,0.780363,True,USA,False,True,0.780363
+dc012abe-5e86-41c4-b740-a9e91a0fe240,Nigeria,drink,H,H_appearance,0.723353,True,Rwanda,False,True,0.723353
