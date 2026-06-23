@@ -1,0 +1,5 @@
+Model,Mean top-patch row,Mean top-patch col,Dist from centre,% patches at top half,% patches at centre 50%
+CLIP,2.65,2.98,6.11,100.0,32.0
+LLaVA,2.9,3.43,6.0,96.2,32.8
+Qwen2-VL,2.73,2.86,6.15,100.0,33.6
+InternVL2,2.61,3.06,6.17,100.0,31.7

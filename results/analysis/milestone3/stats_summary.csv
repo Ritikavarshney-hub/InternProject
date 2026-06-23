@@ -1,0 +1,5 @@
+Model,N maps,Mean max_score,Std max_score,Mean entropy,Frac positive,% flat (<0.01)
+CLIP,266,0.1561,0.1491,2.8503,0.5767,7.5
+LLaVA,265,0.1143,0.1386,3.1194,0.6946,14.0
+Qwen2-VL,259,0.109,0.1387,2.8145,0.6476,23.2
+InternVL2,265,0.0783,0.1226,2.8294,0.5873,29.4

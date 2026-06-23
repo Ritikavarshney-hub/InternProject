@@ -1,0 +1,5 @@
+Model,N occlusion,% covered,N rollout,% rollout
+CLIP,266,100.0,266,100.0
+LLaVA,265,99.6,266,100.0
+Qwen2-VL,259,97.4,0,0.0
+InternVL2,265,99.6,0,0.0
