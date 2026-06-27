@@ -1,0 +1,5 @@
+Model,Total images,Correct,Wrong,UNKNOWN,Accuracy (%),Mean confidence
+CLIP,266,158,108,0,59.4,0.6315
+Qwen2-VL,266,161,98,7,60.5,0.7555
+InternVL2,266,126,139,1,47.4,0.4317
+LLaVA,266,99,166,1,37.2,0.4074

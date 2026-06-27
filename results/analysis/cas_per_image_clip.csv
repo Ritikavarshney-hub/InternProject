@@ -1,236 +1,236 @@
 u_id,model,true_country,pred_country_orig,correct_orig,category_primary,category_name,category_score,pred_k10,changed_k10,pred_k20,changed_k20,pred_k30,changed_k30
-1309b373-b885-4aa0-b6f8-7aab4b734ac2,clip,China,China,True,B,Clothing / Dress,0.573587,China,False,China,False,China,False
-49f5b3aa-dc13-4ebe-bf8d-6771b9298c37,clip,China,China,True,F,Ritual / Festival,0.591065,Ethiopia,True,Ethiopia,True,India,True
+1309b373-b885-4aa0-b6f8-7aab4b734ac2,clip,China,China,True,B,Clothing / Dress,0.573587,India,True,India,True,China,False
+49f5b3aa-dc13-4ebe-bf8d-6771b9298c37,clip,China,China,True,F,Ritual / Festival,0.591065,China,False,India,True,Ethiopia,True
 502a5fee-89c1-4f5d-b41d-9bdd65b11eb1,clip,China,China,True,F,Ritual / Festival,0.540006,China,False,China,False,China,False
 08f8c99f-b47b-46f6-8e29-6bcaa11d8ab1,clip,China,China,True,B,Clothing / Dress,0.49097,China,False,China,False,China,False
 1bad08e1-1e74-421f-996f-5c435cb367e3,clip,China,China,True,F,Ritual / Festival,0.82297,China,False,China,False,China,False
 de8ac0fa-d6dc-41bb-b117-f5e84f22e9e5,clip,China,China,True,D,Food / Objects,0.51162,China,False,China,False,China,False
-07dabc78-3e60-46e1-b6e4-14c03b083f61,clip,China,Rwanda,False,H,Appearance,0.411805,India,True,Rwanda,False,Rwanda,False
-e8417033-3d23-4eb3-b225-e8d68ff8cde3,clip,China,China,True,D,Food / Objects,0.971469,Nigeria,True,Nigeria,True,Nigeria,True
+07dabc78-3e60-46e1-b6e4-14c03b083f61,clip,China,Rwanda,False,H,Appearance,0.411805,Rwanda,False,Rwanda,False,Rwanda,False
+e8417033-3d23-4eb3-b225-e8d68ff8cde3,clip,China,China,True,D,Food / Objects,0.971469,Iran,True,China,False,China,False
 7469bf5a-e55b-4077-8c23-4f80be8daa32,clip,China,Canada,False,D,Food / Objects,0.852698,Ethiopia,True,Ethiopia,True,Ethiopia,True
 803df59c-07e6-4459-a5cb-8c2e27237461,clip,China,China,True,D,Food / Objects,0.371883,China,False,China,False,China,False
-b2886064-331e-4c71-a625-d9d2c5cd9421,clip,China,China,True,H,Appearance,0.533005,Iran,True,Ethiopia,True,Ethiopia,True
-f009866e-207b-4ed4-b0d2-150b69a5d0b0,clip,China,China,True,C,Architecture,0.980014,China,False,China,False,China,False
+b2886064-331e-4c71-a625-d9d2c5cd9421,clip,China,China,True,H,Appearance,0.533005,Iran,True,Iran,True,Iran,True
+f009866e-207b-4ed4-b0d2-150b69a5d0b0,clip,China,China,True,C,Architecture,0.980014,India,True,China,False,China,False
 09c667a0-2ed1-425e-8f15-f0d7b510b5ab,clip,China,China,True,E,Script / Text,0.997072,China,False,China,False,China,False
 5db4404d-6fd6-4ebd-ad5f-15c8be7344d5,clip,China,China,True,D,Food / Objects,0.984139,Iran,True,Iran,True,Iran,True
-481fa382-ad75-4f6e-bdaa-cdadfbc9f4e5,clip,China,China,True,A,National Symbols,0.548006,China,False,Nigeria,True,Nigeria,True
+481fa382-ad75-4f6e-bdaa-cdadfbc9f4e5,clip,China,China,True,A,National Symbols,0.548006,China,False,China,False,China,False
 a8f5c325-4cc4-4371-bd45-5d19156de028,clip,China,China,True,D,Food / Objects,0.940822,China,False,China,False,China,False
-96037b83-81d6-4de0-ac58-e2ea3f1d0f68,clip,China,Brazil,False,F,Ritual / Festival,0.99051,Nigeria,True,Nigeria,True,Nigeria,True
-22bb7d28-bb29-4a85-af25-85f66ce70d52,clip,China,China,True,C,Architecture,0.697816,Turkey,True,India,True,India,True
-4c169dc1-0511-4867-803b-2c5724589072,clip,China,China,True,D,Food / Objects,0.989293,China,False,China,False,China,False
+96037b83-81d6-4de0-ac58-e2ea3f1d0f68,clip,China,Brazil,False,F,Ritual / Festival,0.99051,Nigeria,True,Canada,True,Canada,True
+22bb7d28-bb29-4a85-af25-85f66ce70d52,clip,China,China,True,C,Architecture,0.697816,Brazil,True,China,False,India,True
+4c169dc1-0511-4867-803b-2c5724589072,clip,China,China,True,D,Food / Objects,0.989293,China,False,Turkey,True,Iran,True
 d6bdefc4-d83f-4df5-a2c0-74ce4bb3dbea,clip,China,China,True,F,Ritual / Festival,0.720282,China,False,China,False,China,False
 aa454b8a-ea44-47d8-bfc5-8e0691affc18,clip,China,China,True,C,Architecture,0.948782,China,False,China,False,China,False
 c4ba628f-6ccc-4659-88e0-989cf36c6b66,clip,Canada,Canada,True,H,Appearance,0.505334,Canada,False,Canada,False,USA,True
-c6e2a507-d64e-4f66-a017-8c4bec7a25aa,clip,Canada,Germany,False,D,Food / Objects,0.843457,Germany,False,Germany,False,Germany,False
-48cb84ac-f6c8-41d5-a8bd-433790fd4228,clip,Canada,USA,False,D,Food / Objects,0.663482,India,True,India,True,Rwanda,True
-af32828e-77c5-4c31-ad76-c68b4c3d2cfb,clip,Canada,Germany,False,D,Food / Objects,0.972657,Turkey,True,Germany,False,Germany,False
+c6e2a507-d64e-4f66-a017-8c4bec7a25aa,clip,Canada,Germany,False,D,Food / Objects,0.843457,Ethiopia,True,Ethiopia,True,Ethiopia,True
+48cb84ac-f6c8-41d5-a8bd-433790fd4228,clip,Canada,USA,False,D,Food / Objects,0.663482,India,True,Germany,True,India,True
+af32828e-77c5-4c31-ad76-c68b4c3d2cfb,clip,Canada,Germany,False,D,Food / Objects,0.972657,Turkey,True,Turkey,True,Turkey,True
 96b37654-4373-4743-981d-ef25317c602a,clip,Canada,USA,False,D,Food / Objects,0.647475,India,True,Nigeria,True,Nigeria,True
 a2ebb579-6a95-4ef6-90d3-7472f9739d27,clip,Canada,USA,False,H,Appearance,0.889801,Iran,True,Iran,True,Iran,True
-734acb99-0962-4131-b4f7-725c20411db8,clip,Canada,Canada,True,F,Ritual / Festival,0.785465,Ethiopia,True,Canada,False,Ethiopia,True
-a914a20e-7219-43e5-929a-a60eeb2b0eba,clip,Canada,USA,False,F,Ritual / Festival,0.520552,Nigeria,True,Nigeria,True,Nigeria,True
-8869939b-17da-472e-8637-58d80e9291e7,clip,Canada,Canada,True,H,Appearance,0.30653,Nigeria,True,China,True,Germany,True
+734acb99-0962-4131-b4f7-725c20411db8,clip,Canada,Canada,True,F,Ritual / Festival,0.785465,Canada,False,Ethiopia,True,Ethiopia,True
+a914a20e-7219-43e5-929a-a60eeb2b0eba,clip,Canada,USA,False,F,Ritual / Festival,0.520552,USA,False,USA,False,USA,False
+8869939b-17da-472e-8637-58d80e9291e7,clip,Canada,Canada,True,H,Appearance,0.30653,Nigeria,True,Germany,True,Germany,True
 184d6c08-7237-4f6b-b49d-04b5b2bef635,clip,Canada,Canada,True,A,National Symbols,0.985855,Canada,False,Canada,False,Canada,False
-8a4aa22a-5c51-425d-ad3d-69de43f88b0c,clip,Canada,Canada,True,H,Appearance,0.278275,Nigeria,True,Nigeria,True,Nigeria,True
-6c905b2d-0ff6-4c21-b0ef-50861a2cc2b5,clip,Canada,Canada,True,D,Food / Objects,0.948496,Ethiopia,True,Ethiopia,True,Ethiopia,True
+8a4aa22a-5c51-425d-ad3d-69de43f88b0c,clip,Canada,Canada,True,H,Appearance,0.278275,Brazil,True,Brazil,True,Nigeria,True
+6c905b2d-0ff6-4c21-b0ef-50861a2cc2b5,clip,Canada,Canada,True,D,Food / Objects,0.948496,Canada,False,Canada,False,Canada,False
 0c62e0fb-0aea-49a7-b333-b15a64c8359f,clip,Canada,Turkey,False,D,Food / Objects,0.984513,Turkey,False,Turkey,False,Turkey,False
-7174dc33-dbe6-4c70-a3ef-ae0be8ab6b29,clip,Canada,Canada,True,D,Food / Objects,0.723053,Germany,True,Germany,True,Germany,True
-fdd8ea6d-e848-4b9c-af83-8e1ad010ef1e,clip,Canada,Germany,False,D,Food / Objects,0.867588,Ethiopia,True,Ethiopia,True,Ethiopia,True
-b5ddf9ce-952d-4fe5-a878-b1ffe90ff1ef,clip,Canada,USA,False,C,Architecture,0.995328,India,True,Brazil,True,Brazil,True
-4f04c1f6-a284-4219-9412-beacc222f51d,clip,Canada,Germany,False,A,National Symbols,0.856681,USA,True,USA,True,USA,True
+7174dc33-dbe6-4c70-a3ef-ae0be8ab6b29,clip,Canada,Canada,True,D,Food / Objects,0.723053,Iran,True,Germany,True,Germany,True
+fdd8ea6d-e848-4b9c-af83-8e1ad010ef1e,clip,Canada,Germany,False,D,Food / Objects,0.867588,Ethiopia,True,Brazil,True,Ethiopia,True
+b5ddf9ce-952d-4fe5-a878-b1ffe90ff1ef,clip,Canada,USA,False,C,Architecture,0.995328,Brazil,True,Brazil,True,USA,False
+4f04c1f6-a284-4219-9412-beacc222f51d,clip,Canada,Germany,False,A,National Symbols,0.856681,USA,True,Germany,False,USA,True
 fa9d08f1-413b-4a05-b058-380843d46806,clip,Canada,Canada,True,F,Ritual / Festival,0.579767,Nigeria,True,Nigeria,True,Nigeria,True
 746e8569-1091-499b-8de8-08bce681dd84,clip,Canada,Canada,True,F,Ritual / Festival,0.453756,Canada,False,Canada,False,Canada,False
-19ae4ab7-a1b1-47c9-a81d-24a4020df41a,clip,Canada,Brazil,False,C,Architecture,0.483472,Brazil,False,Brazil,False,Nigeria,True
-318807ce-d521-41f7-b9b2-e533deb7a178,clip,Canada,USA,False,H,Appearance,0.574378,USA,False,Canada,True,Germany,True
-acd68d0e-9d10-40ef-9fd1-cbdc720808ef,clip,Canada,Canada,True,A,National Symbols,0.535798,Canada,False,Canada,False,Canada,False
-591a4da1-0a04-4dc6-ba4e-a3526dbce1c6,clip,Canada,Canada,True,G,Natural Landscape,0.330937,Canada,False,Canada,False,Nigeria,True
+19ae4ab7-a1b1-47c9-a81d-24a4020df41a,clip,Canada,Brazil,False,C,Architecture,0.483472,Germany,True,Rwanda,True,Germany,True
+318807ce-d521-41f7-b9b2-e533deb7a178,clip,Canada,USA,False,H,Appearance,0.574378,USA,False,USA,False,USA,False
+acd68d0e-9d10-40ef-9fd1-cbdc720808ef,clip,Canada,Canada,True,A,National Symbols,0.535798,Canada,False,Nigeria,True,Nigeria,True
+591a4da1-0a04-4dc6-ba4e-a3526dbce1c6,clip,Canada,Canada,True,G,Natural Landscape,0.330937,Canada,False,Canada,False,Canada,False
 bfa7333e-1ab0-4ebc-b11c-d7c0cc5a9e8c,clip,Canada,Canada,True,A,National Symbols,0.811499,Canada,False,Canada,False,Canada,False
 87161e09-edf6-46a7-acf4-1d2ba9f61348,clip,Canada,Canada,True,A,National Symbols,0.398466,Canada,False,Canada,False,Canada,False
-31824d6c-cdda-43df-9792-17cb3f44217d,clip,Nigeria,Rwanda,False,B,Clothing / Dress,0.877978,India,True,Nigeria,True,Nigeria,True
-7409a04b-e4e0-48a6-83aa-9ea94eeb78da,clip,Nigeria,Germany,False,G,Natural Landscape,0.415243,Nigeria,True,Brazil,True,Nigeria,True
-a2ccb005-d747-43f8-8315-2518a1ece07d,clip,Nigeria,Rwanda,False,D,Food / Objects,0.373952,Ethiopia,True,Ethiopia,True,Ethiopia,True
+31824d6c-cdda-43df-9792-17cb3f44217d,clip,Nigeria,Rwanda,False,B,Clothing / Dress,0.877978,Ethiopia,True,Nigeria,True,Nigeria,True
+7409a04b-e4e0-48a6-83aa-9ea94eeb78da,clip,Nigeria,Germany,False,G,Natural Landscape,0.415243,Germany,False,Germany,False,Nigeria,True
+a2ccb005-d747-43f8-8315-2518a1ece07d,clip,Nigeria,Rwanda,False,D,Food / Objects,0.373952,Germany,True,Ethiopia,True,Germany,True
 bb027c12-2666-421b-a523-4bd7c4c30f20,clip,Nigeria,Brazil,False,H,Appearance,0.507357,Ethiopia,True,Ethiopia,True,Ethiopia,True
-4713f5b0-48da-4ab5-99bc-ffe12d7d62fa,clip,Nigeria,Rwanda,False,F,Ritual / Festival,0.314595,Nigeria,True,Nigeria,True,Nigeria,True
-98b439d0-91bc-40ba-8d77-ec2889c96666,clip,Nigeria,Nigeria,True,H,Appearance,0.888921,Nigeria,False,Nigeria,False,Nigeria,False
+4713f5b0-48da-4ab5-99bc-ffe12d7d62fa,clip,Nigeria,Rwanda,False,F,Ritual / Festival,0.314595,Rwanda,False,Rwanda,False,Rwanda,False
+98b439d0-91bc-40ba-8d77-ec2889c96666,clip,Nigeria,Nigeria,True,H,Appearance,0.888921,Nigeria,False,Rwanda,True,Rwanda,True
 4457fdf9-a623-41bd-8a0d-fd42128f38b3,clip,Nigeria,Nigeria,True,B,Clothing / Dress,0.961234,Nigeria,False,Nigeria,False,Nigeria,False
 2c1bd295-9cde-47af-af0e-202c03272d01,clip,Nigeria,Nigeria,True,B,Clothing / Dress,0.96852,Nigeria,False,Nigeria,False,Nigeria,False
 da343301-2fc3-42b9-9d8e-7f90b000f00f,clip,Nigeria,Rwanda,False,D,Food / Objects,0.559483,Rwanda,False,Rwanda,False,Rwanda,False
-c717f3a6-7b14-4f61-b395-89d63b0c6e73,clip,Nigeria,Nigeria,True,B,Clothing / Dress,0.826969,Nigeria,False,Rwanda,True,Rwanda,True
+c717f3a6-7b14-4f61-b395-89d63b0c6e73,clip,Nigeria,Nigeria,True,B,Clothing / Dress,0.826969,Rwanda,True,Rwanda,True,Rwanda,True
 4b6b43e4-d3c9-4faf-8ed9-ed1e51754baf,clip,Nigeria,Rwanda,False,G,Natural Landscape,0.336912,Rwanda,False,Rwanda,False,Rwanda,False
 6e72fc43-14d2-40a5-863c-62d14dc5facb,clip,Nigeria,Rwanda,False,F,Ritual / Festival,0.832235,Nigeria,True,Nigeria,True,Nigeria,True
 60c2f1e2-820c-4c10-a873-af1a75d9e4db,clip,Nigeria,Nigeria,True,F,Ritual / Festival,0.667271,Nigeria,False,Nigeria,False,Nigeria,False
 0ce7d616-31bd-4eac-99ec-195e0172b4fc,clip,Nigeria,Rwanda,False,F,Ritual / Festival,0.530333,Rwanda,False,Rwanda,False,Rwanda,False
-3a181f33-846c-43f8-8512-5919ce7088bf,clip,Nigeria,India,False,B,Clothing / Dress,0.69111,Nigeria,True,Nigeria,True,Nigeria,True
-67fa11a3-fa1f-4817-a189-87f38daf3011,clip,Nigeria,Brazil,False,D,Food / Objects,0.472954,Iran,True,Iran,True,Iran,True
+3a181f33-846c-43f8-8512-5919ce7088bf,clip,Nigeria,India,False,B,Clothing / Dress,0.69111,Nigeria,True,Ethiopia,True,Ethiopia,True
+67fa11a3-fa1f-4817-a189-87f38daf3011,clip,Nigeria,Brazil,False,D,Food / Objects,0.472954,Iran,True,Iran,True,Rwanda,True
 6518121e-ba08-4e76-aa33-2c2e00598fdd,clip,Nigeria,Rwanda,False,B,Clothing / Dress,0.93312,Nigeria,True,Nigeria,True,Nigeria,True
 dc012abe-5e86-41c4-b740-a9e91a0fe240,clip,Nigeria,Rwanda,False,H,Appearance,0.723353,Nigeria,True,Nigeria,True,Nigeria,True
-3b78bd2d-5f55-4480-8637-ccc22c549402,clip,Nigeria,Nigeria,True,H,Appearance,0.980804,Rwanda,True,Nigeria,False,Nigeria,False
-9ace2f1e-6a06-45ba-bed9-46ac3b80b038,clip,Nigeria,Rwanda,False,D,Food / Objects,0.816348,Nigeria,True,Nigeria,True,Nigeria,True
-ecd4f0c8-0bb6-4a35-ac36-66588d7d4185,clip,Nigeria,USA,False,H,Appearance,0.57723,Nigeria,True,Nigeria,True,Rwanda,True
+3b78bd2d-5f55-4480-8637-ccc22c549402,clip,Nigeria,Nigeria,True,H,Appearance,0.980804,Nigeria,False,Rwanda,True,Rwanda,True
+9ace2f1e-6a06-45ba-bed9-46ac3b80b038,clip,Nigeria,Rwanda,False,D,Food / Objects,0.816348,Nigeria,True,Nigeria,True,Rwanda,False
+ecd4f0c8-0bb6-4a35-ac36-66588d7d4185,clip,Nigeria,USA,False,H,Appearance,0.57723,Rwanda,True,Nigeria,True,Nigeria,True
 69a710fd-f216-43b8-9ec6-8fd324c49690,clip,Nigeria,Nigeria,True,D,Food / Objects,0.608631,Nigeria,False,Nigeria,False,Nigeria,False
 30beeebf-ea67-484f-93a7-2cfd29242fe4,clip,Nigeria,Nigeria,True,G,Natural Landscape,0.990777,Nigeria,False,Nigeria,False,Nigeria,False
 6edf17b0-f94a-42d4-b233-4234439deda4,clip,Nigeria,Nigeria,True,D,Food / Objects,0.996366,Nigeria,False,Nigeria,False,Nigeria,False
 c6582a96-d4df-4b5a-8a86-3652687aa1e8,clip,Nigeria,Nigeria,True,D,Food / Objects,0.97836,Rwanda,True,Rwanda,True,Rwanda,True
-13f37320-7bb5-4232-9bf2-8f28c57c4582,clip,USA,USA,True,D,Food / Objects,0.991723,USA,False,USA,False,Canada,True
-9e63b44b-6f24-4288-9b27-8626e11bf0a3,clip,USA,Turkey,False,D,Food / Objects,0.977356,Turkey,False,Turkey,False,Turkey,False
-a2dcde1c-1b2c-4936-ac07-8e912413e23e,clip,USA,Turkey,False,D,Food / Objects,0.977079,India,True,India,True,Iran,True
-6f5bf0aa-f72d-4e5d-8ac8-bcc1761d0f8a,clip,USA,USA,True,G,Natural Landscape,0.813636,Rwanda,True,Brazil,True,Brazil,True
-41388d0a-c0cd-4947-a415-db9ba4893bcd,clip,USA,USA,True,D,Food / Objects,0.968627,USA,False,Nigeria,True,USA,False
-4455c508-07a5-483c-a247-92904d635fee,clip,USA,USA,True,D,Food / Objects,0.733079,Nigeria,True,Nigeria,True,Nigeria,True
+13f37320-7bb5-4232-9bf2-8f28c57c4582,clip,USA,USA,True,D,Food / Objects,0.991723,Canada,True,Canada,True,Canada,True
+9e63b44b-6f24-4288-9b27-8626e11bf0a3,clip,USA,Turkey,False,D,Food / Objects,0.977356,Turkey,False,Turkey,False,Ethiopia,True
+a2dcde1c-1b2c-4936-ac07-8e912413e23e,clip,USA,Turkey,False,D,Food / Objects,0.977079,India,True,India,True,India,True
+6f5bf0aa-f72d-4e5d-8ac8-bcc1761d0f8a,clip,USA,USA,True,G,Natural Landscape,0.813636,Canada,True,Brazil,True,Rwanda,True
+41388d0a-c0cd-4947-a415-db9ba4893bcd,clip,USA,USA,True,D,Food / Objects,0.968627,USA,False,USA,False,Ethiopia,True
+4455c508-07a5-483c-a247-92904d635fee,clip,USA,USA,True,D,Food / Objects,0.733079,USA,False,Nigeria,True,Nigeria,True
 9e592190-7413-4778-8631-3908e7577661,clip,USA,Ethiopia,False,F,Ritual / Festival,0.57268,Ethiopia,False,Ethiopia,False,Ethiopia,False
 a6b53f36-7864-4876-a058-7e0be321388b,clip,USA,USA,True,H,Appearance,0.462822,Ethiopia,True,Ethiopia,True,Ethiopia,True
-5473783d-ba57-45b2-8414-33eb26c36ccf,clip,USA,USA,True,H,Appearance,0.683984,Canada,True,India,True,India,True
-89df03ce-b19f-474d-8f36-e9b41be7d3d5,clip,USA,USA,True,D,Food / Objects,0.981588,India,True,Ethiopia,True,Ethiopia,True
-7d6f190c-4df7-4306-a1e9-b87ed1e3087c,clip,USA,USA,True,A,National Symbols,0.886297,Nigeria,True,Brazil,True,Rwanda,True
-ff57c370-a704-49a2-8662-f040dca197df,clip,USA,USA,True,H,Appearance,0.624307,India,True,India,True,India,True
-87a16f79-2e21-4b11-93b2-4871169911e7,clip,USA,USA,True,A,National Symbols,0.869866,USA,False,USA,False,USA,False
+5473783d-ba57-45b2-8414-33eb26c36ccf,clip,USA,USA,True,H,Appearance,0.683984,India,True,India,True,India,True
+89df03ce-b19f-474d-8f36-e9b41be7d3d5,clip,USA,USA,True,D,Food / Objects,0.981588,Turkey,True,Canada,True,Germany,True
+7d6f190c-4df7-4306-a1e9-b87ed1e3087c,clip,USA,USA,True,A,National Symbols,0.886297,Brazil,True,Nigeria,True,Nigeria,True
+ff57c370-a704-49a2-8662-f040dca197df,clip,USA,USA,True,H,Appearance,0.624307,Nigeria,True,Nigeria,True,Nigeria,True
+87a16f79-2e21-4b11-93b2-4871169911e7,clip,USA,USA,True,A,National Symbols,0.869866,USA,False,USA,False,Brazil,True
 1880497c-e945-4689-839e-03022a70d7a7,clip,USA,USA,True,H,Appearance,0.876361,USA,False,USA,False,USA,False
 4436f0b0-f4fe-4383-911d-4640c75d9018,clip,USA,Ethiopia,False,H,Appearance,0.549924,USA,True,USA,True,USA,True
-46718728-a72a-4651-a2dc-d9d39b32ab74,clip,USA,USA,True,H,Appearance,0.69683,Rwanda,True,Nigeria,True,Nigeria,True
-87cc957e-bd81-4ea9-8d40-d6d9bce4ec76,clip,USA,Turkey,False,B,Clothing / Dress,0.565689,Germany,True,Germany,True,Rwanda,True
+46718728-a72a-4651-a2dc-d9d39b32ab74,clip,USA,USA,True,H,Appearance,0.69683,Nigeria,True,Rwanda,True,Rwanda,True
+87cc957e-bd81-4ea9-8d40-d6d9bce4ec76,clip,USA,Turkey,False,B,Clothing / Dress,0.565689,USA,True,Rwanda,True,Ethiopia,True
 2b697bc6-809b-4d92-aa10-10c31472acaa,clip,USA,USA,True,H,Appearance,0.379956,Germany,True,Germany,True,Germany,True
-f3dee24e-9af4-4a3e-b21c-ad8bf74510dc,clip,USA,Nigeria,False,G,Natural Landscape,0.610444,Nigeria,False,Nigeria,False,Nigeria,False
+f3dee24e-9af4-4a3e-b21c-ad8bf74510dc,clip,USA,Nigeria,False,G,Natural Landscape,0.610444,Nigeria,False,Brazil,True,Brazil,True
 b6aaf31f-d668-4f6e-9d34-c7ecbfa7c8a8,clip,USA,USA,True,A,National Symbols,0.922065,USA,False,USA,False,USA,False
-9f2b9f74-faa4-4b54-a4f1-aa65e32cb9f9,clip,USA,Rwanda,False,D,Food / Objects,0.621304,Iran,True,India,True,India,True
+9f2b9f74-faa4-4b54-a4f1-aa65e32cb9f9,clip,USA,Rwanda,False,D,Food / Objects,0.621304,India,True,Iran,True,Iran,True
 7cd63749-44d8-4024-ac6c-727bde0ae91a,clip,USA,Germany,False,H,Appearance,0.409998,USA,True,USA,True,USA,True
-dca004c5-3d95-44e6-95ef-8116165e04a3,clip,USA,USA,True,F,Ritual / Festival,0.566028,USA,False,USA,False,Brazil,True
-d527b146-00a1-41fb-8671-6114ee9cabb9,clip,USA,USA,True,H,Appearance,0.448023,Rwanda,True,Ethiopia,True,Rwanda,True
-2fd3e1c4-4980-4f7d-8876-69cd79654a75,clip,USA,Rwanda,False,D,Food / Objects,0.621304,Iran,True,India,True,India,True
-41e6fcd3-a802-4639-a9f3-3943c6b1242a,clip,India,China,False,G,Natural Landscape,0.980569,China,False,Rwanda,True,Rwanda,True
+dca004c5-3d95-44e6-95ef-8116165e04a3,clip,USA,USA,True,F,Ritual / Festival,0.566028,Nigeria,True,Nigeria,True,Brazil,True
+d527b146-00a1-41fb-8671-6114ee9cabb9,clip,USA,USA,True,H,Appearance,0.448023,Canada,True,Rwanda,True,Rwanda,True
+2fd3e1c4-4980-4f7d-8876-69cd79654a75,clip,USA,Rwanda,False,D,Food / Objects,0.621304,India,True,Iran,True,Iran,True
+41e6fcd3-a802-4639-a9f3-3943c6b1242a,clip,India,China,False,G,Natural Landscape,0.980569,Rwanda,True,Rwanda,True,India,True
 6a8d47c3-55db-4f2d-b7e0-6c25b6a268c8,clip,India,USA,False,C,Architecture,0.849231,India,True,India,True,India,True
-b577985c-6eca-41d4-805c-13fdb8822df8,clip,India,India,True,F,Ritual / Festival,0.995475,India,False,Ethiopia,True,Ethiopia,True
+b577985c-6eca-41d4-805c-13fdb8822df8,clip,India,India,True,F,Ritual / Festival,0.995475,India,False,India,False,India,False
 fdc20e45-b3db-48bd-946b-8969194f3fde,clip,India,Rwanda,False,H,Appearance,0.446824,Rwanda,False,Rwanda,False,Rwanda,False
-9844e1be-1620-44ee-ac68-57ae9d58ab4f,clip,India,India,True,F,Ritual / Festival,0.924595,India,False,India,False,India,False
-eced265e-c274-45b9-9e1d-16ab6fbad9cd,clip,India,India,True,H,Appearance,0.404414,Ethiopia,True,Rwanda,True,India,False
-a9aa210b-bfa3-4ff6-8c82-3c3e7b4544b5,clip,India,India,True,B,Clothing / Dress,0.7624,India,False,India,False,China,True
+9844e1be-1620-44ee-ac68-57ae9d58ab4f,clip,India,India,True,F,Ritual / Festival,0.924595,India,False,Nigeria,True,Nigeria,True
+eced265e-c274-45b9-9e1d-16ab6fbad9cd,clip,India,India,True,H,Appearance,0.404414,India,False,India,False,Rwanda,True
+a9aa210b-bfa3-4ff6-8c82-3c3e7b4544b5,clip,India,India,True,B,Clothing / Dress,0.7624,India,False,India,False,Iran,True
 0c06402c-32eb-4fb0-bd5c-3d8ce5f6e9e2,clip,India,India,True,B,Clothing / Dress,0.809081,India,False,India,False,India,False
-ac9a3d5c-63dd-4fbd-9676-9f913f4029f3,clip,India,India,True,B,Clothing / Dress,0.789133,India,False,Nigeria,True,Nigeria,True
-520f8c8b-3426-4a8e-affd-07b0c26f954b,clip,India,India,True,B,Clothing / Dress,0.90861,India,False,Iran,True,Iran,True
-d4d631c2-4c15-4f43-b3bb-bd1fe3157b64,clip,India,India,True,G,Natural Landscape,0.38294,India,False,Ethiopia,True,Ethiopia,True
+ac9a3d5c-63dd-4fbd-9676-9f913f4029f3,clip,India,India,True,B,Clothing / Dress,0.789133,India,False,India,False,India,False
+520f8c8b-3426-4a8e-affd-07b0c26f954b,clip,India,India,True,B,Clothing / Dress,0.90861,India,False,India,False,India,False
+d4d631c2-4c15-4f43-b3bb-bd1fe3157b64,clip,India,India,True,G,Natural Landscape,0.38294,India,False,India,False,India,False
 0f7abdc3-c885-4d91-bb7d-67f1c607a7d0,clip,India,Canada,False,G,Natural Landscape,0.977219,India,True,India,True,India,True
 be330458-bfe8-4b6d-ab4f-0e121faca59d,clip,India,India,True,A,National Symbols,0.634569,India,False,India,False,India,False
 ae89905e-966f-43f0-8c0f-cc4ce1b87ac1,clip,India,Iran,False,G,Natural Landscape,0.983632,India,True,Canada,True,Canada,True
-3156bba1-7c6d-417e-8841-d6319dc7e3af,clip,India,Rwanda,False,H,Appearance,0.679976,Rwanda,False,Brazil,True,Nigeria,True
+3156bba1-7c6d-417e-8841-d6319dc7e3af,clip,India,Rwanda,False,H,Appearance,0.679976,Rwanda,False,Nigeria,True,Rwanda,False
 dad09341-9891-4f9e-b292-1f834f9fedc4,clip,India,Ethiopia,False,D,Food / Objects,0.724616,Ethiopia,False,Ethiopia,False,Ethiopia,False
-9e192054-6b30-44b3-841f-785853bfe7e4,clip,India,Canada,False,H,Appearance,0.569559,Rwanda,True,Rwanda,True,Nigeria,True
-4048bef4-586f-466a-8f53-3a1332979fcd,clip,India,USA,False,D,Food / Objects,0.83319,India,True,India,True,China,True
-c62249de-cc8b-43b7-aa90-842dbd8d89e2,clip,India,China,False,D,Food / Objects,0.40164,Iran,True,Iran,True,Iran,True
+9e192054-6b30-44b3-841f-785853bfe7e4,clip,India,Canada,False,H,Appearance,0.569559,Rwanda,True,Rwanda,True,Rwanda,True
+4048bef4-586f-466a-8f53-3a1332979fcd,clip,India,USA,False,D,Food / Objects,0.83319,India,True,India,True,India,True
+c62249de-cc8b-43b7-aa90-842dbd8d89e2,clip,India,China,False,D,Food / Objects,0.40164,India,True,India,True,Iran,True
 6ec6b59a-9126-4462-89ee-df55d996f4ab,clip,India,China,False,C,Architecture,0.715001,India,True,India,True,India,True
 5c7b7038-b58d-4a21-b867-b7a72612ff55,clip,India,China,False,D,Food / Objects,0.536796,India,True,India,True,India,True
-39e397ed-fa8c-40ee-974d-b2f01e397e64,clip,India,China,False,H,Appearance,0.291855,India,True,India,True,India,True
-a82f3319-8037-44df-bcab-0d39d14590e6,clip,India,USA,False,D,Food / Objects,0.923618,Ethiopia,True,Ethiopia,True,Ethiopia,True
-3bbeaac4-39d5-449f-b8e0-69a66bbb9400,clip,India,USA,False,H,Appearance,0.339152,India,True,Iran,True,Iran,True
-4e2b3e11-9de8-4bfb-99c2-0bac3f7c7618,clip,India,Rwanda,False,G,Natural Landscape,0.745813,Ethiopia,True,Germany,True,Germany,True
-e43999fc-df28-41f1-982f-64a51d79acb7,clip,Turkey,Turkey,True,B,Clothing / Dress,0.863574,Iran,True,Ethiopia,True,Iran,True
+39e397ed-fa8c-40ee-974d-b2f01e397e64,clip,India,China,False,H,Appearance,0.291855,Iran,True,Iran,True,India,True
+a82f3319-8037-44df-bcab-0d39d14590e6,clip,India,USA,False,D,Food / Objects,0.923618,India,True,Nigeria,True,Ethiopia,True
+3bbeaac4-39d5-449f-b8e0-69a66bbb9400,clip,India,USA,False,H,Appearance,0.339152,Iran,True,Nigeria,True,Nigeria,True
+4e2b3e11-9de8-4bfb-99c2-0bac3f7c7618,clip,India,Rwanda,False,G,Natural Landscape,0.745813,Ethiopia,True,Ethiopia,True,Ethiopia,True
+e43999fc-df28-41f1-982f-64a51d79acb7,clip,Turkey,Turkey,True,B,Clothing / Dress,0.863574,Iran,True,Iran,True,Ethiopia,True
 c3a1ddb5-f12f-4806-bda6-4189d38228d7,clip,Turkey,Turkey,True,D,Food / Objects,0.824784,Turkey,False,Turkey,False,Turkey,False
 a950d18e-1dbc-46c8-955e-4bbf4f41aadb,clip,Turkey,Turkey,True,C,Architecture,0.961839,Turkey,False,Turkey,False,Turkey,False
-2b049977-6bfc-4a19-b59a-c9e2beffab94,clip,Turkey,USA,False,H,Appearance,0.780363,Brazil,True,India,True,Nigeria,True
-2329409d-2712-4aa5-96d1-2cd16298f150,clip,Turkey,Turkey,True,D,Food / Objects,0.522194,China,True,Iran,True,Iran,True
-a7465e78-a57b-4a6c-bbcf-9214feeafb74,clip,Turkey,Turkey,True,D,Food / Objects,0.892136,Rwanda,True,Rwanda,True,Rwanda,True
-fc76de15-b866-4251-af12-bd76901f7c3d,clip,Turkey,Turkey,True,D,Food / Objects,0.921932,China,True,China,True,China,True
-cedc6039-0f3d-4995-bf1f-eb1cd6590cbf,clip,Turkey,Turkey,True,D,Food / Objects,0.892136,Rwanda,True,Rwanda,True,Rwanda,True
+2b049977-6bfc-4a19-b59a-c9e2beffab94,clip,Turkey,USA,False,H,Appearance,0.780363,Ethiopia,True,Ethiopia,True,India,True
+2329409d-2712-4aa5-96d1-2cd16298f150,clip,Turkey,Turkey,True,D,Food / Objects,0.522194,Turkey,False,Turkey,False,Brazil,True
+a7465e78-a57b-4a6c-bbcf-9214feeafb74,clip,Turkey,Turkey,True,D,Food / Objects,0.892136,Ethiopia,True,Ethiopia,True,Ethiopia,True
+fc76de15-b866-4251-af12-bd76901f7c3d,clip,Turkey,Turkey,True,D,Food / Objects,0.921932,Ethiopia,True,Rwanda,True,Rwanda,True
+cedc6039-0f3d-4995-bf1f-eb1cd6590cbf,clip,Turkey,Turkey,True,D,Food / Objects,0.892136,Ethiopia,True,Ethiopia,True,Ethiopia,True
 1a2b2bda-ede8-4e7c-99a6-7072401066e6,clip,Turkey,Turkey,True,D,Food / Objects,0.525111,Turkey,False,Turkey,False,Turkey,False
-fa819613-c07e-4e81-ae2a-6a5fee7b350b,clip,Turkey,Turkey,True,D,Food / Objects,0.464345,Germany,True,Ethiopia,True,Ethiopia,True
+fa819613-c07e-4e81-ae2a-6a5fee7b350b,clip,Turkey,Turkey,True,D,Food / Objects,0.464345,Ethiopia,True,Ethiopia,True,Rwanda,True
 4efc5850-d150-471b-8188-4f35d3b63b48,clip,Turkey,China,False,E,Script / Text,0.705929,Rwanda,True,Rwanda,True,Rwanda,True
-a5ffd0e5-343e-484b-92dc-aa8f00b18e98,clip,Turkey,USA,False,B,Clothing / Dress,0.426572,Germany,True,Germany,True,Germany,True
-c67a3887-7cf3-4455-8122-e60eedd643a7,clip,Turkey,Turkey,True,B,Clothing / Dress,0.992333,Iran,True,Iran,True,Iran,True
-0c5aee4c-d9fe-462e-8df1-ef7320c618cb,clip,Turkey,USA,False,H,Appearance,0.506235,Brazil,True,Rwanda,True,Rwanda,True
-2272ab97-94b6-4151-9ec6-763f05b0c22c,clip,Turkey,Germany,False,H,Appearance,0.358828,Ethiopia,True,Ethiopia,True,Ethiopia,True
+a5ffd0e5-343e-484b-92dc-aa8f00b18e98,clip,Turkey,USA,False,B,Clothing / Dress,0.426572,Brazil,True,Rwanda,True,Rwanda,True
+c67a3887-7cf3-4455-8122-e60eedd643a7,clip,Turkey,Turkey,True,B,Clothing / Dress,0.992333,Iran,True,Iran,True,Ethiopia,True
+0c5aee4c-d9fe-462e-8df1-ef7320c618cb,clip,Turkey,USA,False,H,Appearance,0.506235,Rwanda,True,Rwanda,True,Rwanda,True
+2272ab97-94b6-4151-9ec6-763f05b0c22c,clip,Turkey,Germany,False,H,Appearance,0.358828,India,True,Nigeria,True,Nigeria,True
 2b514973-2195-4908-8bda-3f958deb8bdb,clip,Turkey,Iran,False,D,Food / Objects,0.988408,Nigeria,True,Nigeria,True,Nigeria,True
 f7a3dcee-b9cb-4f4b-94b6-617336a4d320,clip,Turkey,Iran,False,G,Natural Landscape,0.393494,Ethiopia,True,Ethiopia,True,Ethiopia,True
-fd72fc17-d0df-47fd-9d0c-4e6803e873c0,clip,Turkey,Turkey,True,D,Food / Objects,0.973346,Germany,True,Brazil,True,Brazil,True
+fd72fc17-d0df-47fd-9d0c-4e6803e873c0,clip,Turkey,Turkey,True,D,Food / Objects,0.973346,Turkey,False,Germany,True,Brazil,True
 e3ddb612-2a9b-4cda-a547-572583a1e202,clip,Turkey,Turkey,True,D,Food / Objects,0.826903,Turkey,False,Turkey,False,Turkey,False
-c6f9ae05-ef81-4957-b6f0-7a177580e2d5,clip,Turkey,Turkey,True,D,Food / Objects,0.899666,Turkey,False,Turkey,False,Germany,True
-443e4b25-3d4a-40e3-a270-e48c9d37f105,clip,Turkey,Turkey,True,H,Appearance,0.329769,Rwanda,True,USA,True,Rwanda,True
-e2af3f45-8230-49e5-9fb2-19c8b42b9816,clip,Turkey,Turkey,True,D,Food / Objects,0.842413,Turkey,False,Canada,True,Rwanda,True
+c6f9ae05-ef81-4957-b6f0-7a177580e2d5,clip,Turkey,Turkey,True,D,Food / Objects,0.899666,Turkey,False,Turkey,False,Turkey,False
+443e4b25-3d4a-40e3-a270-e48c9d37f105,clip,Turkey,Turkey,True,H,Appearance,0.329769,Rwanda,True,Germany,True,USA,True
+e2af3f45-8230-49e5-9fb2-19c8b42b9816,clip,Turkey,Turkey,True,D,Food / Objects,0.842413,Ethiopia,True,Turkey,False,Turkey,False
 9463f29a-4672-4021-923f-3827ddcfae45,clip,Turkey,Turkey,True,C,Architecture,0.631226,Turkey,False,Brazil,True,Brazil,True
-c5fa60a8-7191-498a-8cc9-db07ec48dd86,clip,Turkey,Rwanda,False,A,National Symbols,0.333976,China,True,Brazil,True,India,True
+c5fa60a8-7191-498a-8cc9-db07ec48dd86,clip,Turkey,Rwanda,False,A,National Symbols,0.333976,Iran,True,China,True,Iran,True
 a48d89f9-3486-46e8-a68c-c47ad537226f,clip,Turkey,Turkey,True,G,Natural Landscape,0.64467,Turkey,False,Turkey,False,Turkey,False
 468a0a50-3eba-40b2-92b0-5b172fb30c01,clip,Ethiopia,Nigeria,False,D,Food / Objects,0.99729,Nigeria,False,Nigeria,False,Nigeria,False
-f555701d-40c7-4400-9bdc-eda62ace2912,clip,Ethiopia,Rwanda,False,G,Natural Landscape,0.471334,Ethiopia,True,Ethiopia,True,Ethiopia,True
-6653f8dd-3fff-48a3-8e29-065917a610b0,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.71656,Nigeria,True,Nigeria,True,Nigeria,True
+f555701d-40c7-4400-9bdc-eda62ace2912,clip,Ethiopia,Rwanda,False,G,Natural Landscape,0.471334,Rwanda,False,Rwanda,False,Rwanda,False
+6653f8dd-3fff-48a3-8e29-065917a610b0,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.71656,Ethiopia,False,Nigeria,True,Nigeria,True
 8eafe537-95b2-4e1f-8416-8196d5fd59cb,clip,Ethiopia,Ethiopia,True,G,Natural Landscape,0.988725,Rwanda,True,Rwanda,True,Rwanda,True
-7cde7484-09d6-4675-859f-c98293b98f27,clip,Ethiopia,Ethiopia,True,H,Appearance,0.526207,Ethiopia,False,Ethiopia,False,Brazil,True
+7cde7484-09d6-4675-859f-c98293b98f27,clip,Ethiopia,Ethiopia,True,H,Appearance,0.526207,Ethiopia,False,Ethiopia,False,Ethiopia,False
 b42f7e81-16d7-4b6b-a305-d8e79c5ddf58,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.830871,Ethiopia,False,Ethiopia,False,Ethiopia,False
-46f8812b-adca-4161-ae1f-9f6c5600599c,clip,Ethiopia,Ethiopia,True,E,Script / Text,0.299737,USA,True,USA,True,Rwanda,True
-d97dd49b-2351-46fb-814b-b5f0a72d251e,clip,Ethiopia,Rwanda,False,D,Food / Objects,0.873092,Nigeria,True,Rwanda,False,Rwanda,False
+46f8812b-adca-4161-ae1f-9f6c5600599c,clip,Ethiopia,Ethiopia,True,E,Script / Text,0.299737,Nigeria,True,Rwanda,True,Iran,True
+d97dd49b-2351-46fb-814b-b5f0a72d251e,clip,Ethiopia,Rwanda,False,D,Food / Objects,0.873092,Ethiopia,True,Ethiopia,True,Nigeria,True
 c8b19f46-371b-46f5-89ca-93b99b2fd6a0,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.938114,Ethiopia,False,Ethiopia,False,Ethiopia,False
-f71472c0-2cb4-475d-9b08-5787585f550e,clip,Ethiopia,Rwanda,False,G,Natural Landscape,0.404498,India,True,India,True,Rwanda,False
-bff5977b-7901-4d1e-96a1-5c0d19848a0f,clip,Ethiopia,Ethiopia,True,A,National Symbols,0.958669,Ethiopia,False,Ethiopia,False,Nigeria,True
+f71472c0-2cb4-475d-9b08-5787585f550e,clip,Ethiopia,Rwanda,False,G,Natural Landscape,0.404498,Rwanda,False,Rwanda,False,Rwanda,False
+bff5977b-7901-4d1e-96a1-5c0d19848a0f,clip,Ethiopia,Ethiopia,True,A,National Symbols,0.958669,Ethiopia,False,Ethiopia,False,Ethiopia,False
 5880280d-93fc-446b-8079-58300559adda,clip,Ethiopia,Rwanda,False,B,Clothing / Dress,0.891314,Ethiopia,True,Ethiopia,True,Ethiopia,True
-9cddc74e-a74b-4b29-9493-f6bac0aa27ea,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.90499,Iran,True,Iran,True,Iran,True
+9cddc74e-a74b-4b29-9493-f6bac0aa27ea,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.90499,Iran,True,Iran,True,Nigeria,True
 0b04f451-42cf-462b-b983-307e13183f45,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.914364,Ethiopia,False,Ethiopia,False,Ethiopia,False
-01a1d08a-e2a5-4a81-afb5-9831cddd3e88,clip,Ethiopia,China,False,H,Appearance,0.462689,Brazil,True,Rwanda,True,Nigeria,True
-3d4755c8-3116-45b7-a80f-10c886ec742d,clip,Ethiopia,Ethiopia,True,G,Natural Landscape,0.710555,Ethiopia,False,Ethiopia,False,Ethiopia,False
+01a1d08a-e2a5-4a81-afb5-9831cddd3e88,clip,Ethiopia,China,False,H,Appearance,0.462689,Brazil,True,Brazil,True,Brazil,True
+3d4755c8-3116-45b7-a80f-10c886ec742d,clip,Ethiopia,Ethiopia,True,G,Natural Landscape,0.710555,Ethiopia,False,Nigeria,True,Nigeria,True
 1b7870bb-8b83-46e9-bced-5f1f7c45ec19,clip,Ethiopia,Rwanda,False,G,Natural Landscape,0.415562,Rwanda,False,Rwanda,False,Rwanda,False
 9c96c4f7-b755-4960-948b-8c0ea7761880,clip,Ethiopia,Ethiopia,True,D,Food / Objects,0.963273,Ethiopia,False,Ethiopia,False,Ethiopia,False
 dc3a53b7-bcd5-4354-93b6-f954b82269e1,clip,Ethiopia,Ethiopia,True,D,Food / Objects,0.998202,Ethiopia,False,Ethiopia,False,Ethiopia,False
-3d773278-fed5-46fd-976e-a018441b9190,clip,Ethiopia,Canada,False,D,Food / Objects,0.959273,Nigeria,True,Ethiopia,True,Nigeria,True
-0ed35e82-2fa8-46d6-b4e0-629c66728ae8,clip,Ethiopia,USA,False,F,Ritual / Festival,0.569919,USA,False,USA,False,USA,False
-22cd2fea-0e59-4662-8146-874abbac1fcf,clip,Ethiopia,Ethiopia,True,F,Ritual / Festival,0.892898,Ethiopia,False,Ethiopia,False,Ethiopia,False
+3d773278-fed5-46fd-976e-a018441b9190,clip,Ethiopia,Canada,False,D,Food / Objects,0.959273,Nigeria,True,Nigeria,True,Ethiopia,True
+0ed35e82-2fa8-46d6-b4e0-629c66728ae8,clip,Ethiopia,USA,False,F,Ritual / Festival,0.569919,USA,False,Ethiopia,True,Ethiopia,True
+22cd2fea-0e59-4662-8146-874abbac1fcf,clip,Ethiopia,Ethiopia,True,F,Ritual / Festival,0.892898,Ethiopia,False,Ethiopia,False,Rwanda,True
 d54dbb9a-94a1-470b-a1d1-12f9f313bb77,clip,Ethiopia,Ethiopia,True,G,Natural Landscape,0.584765,Ethiopia,False,Ethiopia,False,Ethiopia,False
-535f44c0-e569-40b7-9b05-2ab1ef0f8368,clip,Ethiopia,Rwanda,False,D,Food / Objects,0.793477,Ethiopia,True,Nigeria,True,Nigeria,True
-f8c67c30-7009-4b45-9991-34eae86da207,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.90058,India,True,India,True,Germany,True
+535f44c0-e569-40b7-9b05-2ab1ef0f8368,clip,Ethiopia,Rwanda,False,D,Food / Objects,0.793477,Ethiopia,True,Ethiopia,True,Ethiopia,True
+f8c67c30-7009-4b45-9991-34eae86da207,clip,Ethiopia,Ethiopia,True,B,Clothing / Dress,0.90058,Ethiopia,False,India,True,India,True
 19289618-394a-4b0b-ad8f-ffe2157564aa,clip,Iran,Turkey,False,H,Appearance,0.38677,Ethiopia,True,Ethiopia,True,Ethiopia,True
-98eed9b0-5603-4c58-b498-34df83a4d44e,clip,Iran,Iran,True,F,Ritual / Festival,0.518274,Iran,False,India,True,Nigeria,True
+98eed9b0-5603-4c58-b498-34df83a4d44e,clip,Iran,Iran,True,F,Ritual / Festival,0.518274,Iran,False,India,True,India,True
 139ebae1-b6e8-4a4c-9368-f0bb40c93b7e,clip,Iran,Iran,True,D,Food / Objects,0.970023,Iran,False,Iran,False,Iran,False
 d4763361-b78a-4ad4-a747-43d7d7d74151,clip,Iran,Iran,True,D,Food / Objects,0.878165,Iran,False,Iran,False,Iran,False
 0b9aadd7-4769-4584-8fd7-428dfa00fdaf,clip,Iran,USA,False,D,Food / Objects,0.921122,Nigeria,True,Nigeria,True,Nigeria,True
 00a46fda-95f7-455b-8bba-e320575b6ea3,clip,Iran,Iran,True,D,Food / Objects,0.71423,Iran,False,Iran,False,Iran,False
-79f909c7-d80a-4cab-a96a-0f26f374331c,clip,Iran,Iran,True,D,Food / Objects,0.636545,Ethiopia,True,Ethiopia,True,Ethiopia,True
+79f909c7-d80a-4cab-a96a-0f26f374331c,clip,Iran,Iran,True,D,Food / Objects,0.636545,India,True,Ethiopia,True,Ethiopia,True
 75a71390-5aea-4c53-957a-a6e71b746fa3,clip,Iran,Brazil,False,D,Food / Objects,0.862858,India,True,India,True,India,True
-09180ea8-c1bf-4724-9f70-7501f4f20cf4,clip,Iran,Iran,True,D,Food / Objects,0.945112,Rwanda,True,Rwanda,True,Rwanda,True
-d87f6641-66de-446e-a933-47ad83edc1f0,clip,Iran,Iran,True,D,Food / Objects,0.998346,Iran,False,Iran,False,Iran,False
+09180ea8-c1bf-4724-9f70-7501f4f20cf4,clip,Iran,Iran,True,D,Food / Objects,0.945112,India,True,Rwanda,True,Brazil,True
+d87f6641-66de-446e-a933-47ad83edc1f0,clip,Iran,Iran,True,D,Food / Objects,0.998346,Iran,False,Iran,False,India,True
 fbe240a9-76de-4a92-8136-ea1716764e8d,clip,Iran,Iran,True,H,Appearance,0.427342,India,True,India,True,India,True
 34dd1cb8-5e75-42fb-933a-79c31b9a7dbe,clip,Iran,USA,False,F,Ritual / Festival,0.50589,Iran,True,Iran,True,Iran,True
-829128f6-3b16-48aa-9654-69ba391bc9c6,clip,Iran,Iran,True,F,Ritual / Festival,0.68623,Iran,False,Germany,True,Germany,True
+829128f6-3b16-48aa-9654-69ba391bc9c6,clip,Iran,Iran,True,F,Ritual / Festival,0.68623,Iran,False,Iran,False,Canada,True
 f4247462-9218-4cf6-9952-434510763b03,clip,Iran,Iran,True,C,Architecture,0.977093,Iran,False,Iran,False,Iran,False
 e0ab0bf7-2f4f-4f11-a030-bf9080c1007d,clip,Iran,Iran,True,C,Architecture,0.790209,Iran,False,Iran,False,Iran,False
-e7fcffa3-291f-4074-8452-afb7753bd3eb,clip,Iran,Ethiopia,False,D,Food / Objects,0.598508,Iran,True,Iran,True,Iran,True
+e7fcffa3-291f-4074-8452-afb7753bd3eb,clip,Iran,Ethiopia,False,D,Food / Objects,0.598508,Rwanda,True,Rwanda,True,Rwanda,True
 6a9e5e3f-fc05-4c27-99e0-8f62cbfbce0a,clip,Iran,Iran,True,D,Food / Objects,0.86756,Iran,False,Iran,False,Iran,False
-0aa13c4d-b47c-4bc7-a4bb-957561dbad02,clip,Iran,Iran,True,E,Script / Text,0.364064,China,True,Iran,False,Iran,False
-34057f2e-1376-4a8d-92f0-6edc0ffa859b,clip,Iran,Iran,True,D,Food / Objects,0.997413,Iran,False,Iran,False,India,True
-fd222649-bb5d-4bca-aedb-57a9bb3f9a4e,clip,Iran,Germany,False,H,Appearance,0.607719,Iran,True,Iran,True,Iran,True
-2bec6a9c-431a-4dfa-bd02-57b455d95a3a,clip,Iran,Iran,True,B,Clothing / Dress,0.677977,Iran,False,Iran,False,Iran,False
-2ffd117c-1a33-4b7a-a359-c3bb9ad35cec,clip,Iran,Iran,True,E,Script / Text,0.785356,Germany,True,Germany,True,Germany,True
-6be2a046-67c7-4a4c-b67c-31d41a0714a5,clip,Iran,Iran,True,B,Clothing / Dress,0.677977,Iran,False,Iran,False,Iran,False
+0aa13c4d-b47c-4bc7-a4bb-957561dbad02,clip,Iran,Iran,True,E,Script / Text,0.364064,China,True,Iran,False,Ethiopia,True
+34057f2e-1376-4a8d-92f0-6edc0ffa859b,clip,Iran,Iran,True,D,Food / Objects,0.997413,India,True,India,True,India,True
+fd222649-bb5d-4bca-aedb-57a9bb3f9a4e,clip,Iran,Germany,False,H,Appearance,0.607719,Iran,True,Germany,False,Iran,True
+2bec6a9c-431a-4dfa-bd02-57b455d95a3a,clip,Iran,Iran,True,B,Clothing / Dress,0.677977,Germany,True,Iran,False,Germany,True
+2ffd117c-1a33-4b7a-a359-c3bb9ad35cec,clip,Iran,Iran,True,E,Script / Text,0.785356,Germany,True,Iran,False,Germany,True
+6be2a046-67c7-4a4c-b67c-31d41a0714a5,clip,Iran,Iran,True,B,Clothing / Dress,0.677977,Germany,True,Iran,False,Germany,True
 d0e20d67-24e5-4292-9222-4b60fdeb3b4f,clip,Iran,Iran,True,E,Script / Text,0.304681,Iran,False,Iran,False,Iran,False
-1a8a184f-8ace-4cf9-a732-af3ceedef990,clip,Brazil,Canada,False,D,Food / Objects,0.976171,Ethiopia,True,Ethiopia,True,Ethiopia,True
-92e9ea16-f3a3-42fd-9b4a-304d1e8bb39c,clip,Brazil,Brazil,True,G,Natural Landscape,0.544136,Brazil,False,Rwanda,True,Rwanda,True
-8d88fa68-f254-4577-9922-87ba6696d54f,clip,Brazil,Nigeria,False,H,Appearance,0.513601,India,True,Nigeria,False,Nigeria,False
-97b3a522-968d-4db3-9126-1898cb9dca5f,clip,Brazil,Rwanda,False,D,Food / Objects,0.895515,Ethiopia,True,Rwanda,False,Rwanda,False
+1a8a184f-8ace-4cf9-a732-af3ceedef990,clip,Brazil,Canada,False,D,Food / Objects,0.976171,India,True,India,True,Rwanda,True
+92e9ea16-f3a3-42fd-9b4a-304d1e8bb39c,clip,Brazil,Brazil,True,G,Natural Landscape,0.544136,USA,True,USA,True,USA,True
+8d88fa68-f254-4577-9922-87ba6696d54f,clip,Brazil,Nigeria,False,H,Appearance,0.513601,Nigeria,False,Nigeria,False,Nigeria,False
+97b3a522-968d-4db3-9126-1898cb9dca5f,clip,Brazil,Rwanda,False,D,Food / Objects,0.895515,Rwanda,False,Ethiopia,True,Ethiopia,True
 61cd5c3a-9325-4cdf-9ff2-0e8625c8e8bc,clip,Brazil,Canada,False,D,Food / Objects,0.349539,Nigeria,True,Nigeria,True,Nigeria,True
 2faa706e-08ea-4f4e-9f88-6000d10bb322,clip,Brazil,Brazil,True,A,National Symbols,0.980113,Brazil,False,Brazil,False,Brazil,False
 3429c249-9b78-4612-8b82-8ce2405193ce,clip,Brazil,Brazil,True,A,National Symbols,0.934715,Brazil,False,Brazil,False,Brazil,False
 7b73f9f5-70a9-4324-a79d-99302078220b,clip,Brazil,Brazil,True,C,Architecture,0.484355,Brazil,False,Brazil,False,Brazil,False
-525abdb3-d337-4b12-b2ee-01a6e3e1f780,clip,Brazil,Brazil,True,F,Ritual / Festival,0.365475,Brazil,False,Brazil,False,Brazil,False
-6f8351dc-db39-4a4c-9370-b035dc80d66f,clip,Brazil,Brazil,True,D,Food / Objects,0.451007,Brazil,False,China,True,Germany,True
-6b0be593-f193-48ee-bdd8-8f8cc3da741a,clip,Brazil,USA,False,H,Appearance,0.95029,Iran,True,Iran,True,Iran,True
-f1f5ca23-1476-4be2-a203-079c456d58b7,clip,Brazil,Germany,False,B,Clothing / Dress,0.695446,Nigeria,True,Nigeria,True,Nigeria,True
-f12dd800-7905-428c-9690-28747601a795,clip,Brazil,USA,False,H,Appearance,0.95029,Iran,True,Iran,True,Iran,True
+525abdb3-d337-4b12-b2ee-01a6e3e1f780,clip,Brazil,Brazil,True,F,Ritual / Festival,0.365475,Brazil,False,Rwanda,True,Brazil,False
+6f8351dc-db39-4a4c-9370-b035dc80d66f,clip,Brazil,Brazil,True,D,Food / Objects,0.451007,Brazil,False,Brazil,False,Brazil,False
+6b0be593-f193-48ee-bdd8-8f8cc3da741a,clip,Brazil,USA,False,H,Appearance,0.95029,Iran,True,Nigeria,True,Nigeria,True
+f1f5ca23-1476-4be2-a203-079c456d58b7,clip,Brazil,Germany,False,B,Clothing / Dress,0.695446,USA,True,Brazil,True,Nigeria,True
+f12dd800-7905-428c-9690-28747601a795,clip,Brazil,USA,False,H,Appearance,0.95029,Iran,True,Nigeria,True,Nigeria,True
 1b080c55-9d6e-489f-95d6-8f03f713099b,clip,Brazil,Germany,False,H,Appearance,0.509988,Nigeria,True,Nigeria,True,Nigeria,True
 ec6992fc-90b0-45fa-8cb0-0979086911d7,clip,Brazil,Brazil,True,H,Appearance,0.485786,Brazil,False,Brazil,False,Brazil,False
-4c79241e-3dc9-44d8-bed7-421701a25103,clip,Brazil,USA,False,E,Script / Text,0.413484,India,True,Brazil,True,Brazil,True
-e2ee5b98-bfa9-4103-aa2c-e0397e9bd668,clip,Brazil,Brazil,True,F,Ritual / Festival,0.621659,Brazil,False,Rwanda,True,Ethiopia,True
-ec1ebd50-a42c-47c5-a77d-00546adf6224,clip,Brazil,USA,False,F,Ritual / Festival,0.513965,Nigeria,True,Nigeria,True,Nigeria,True
+4c79241e-3dc9-44d8-bed7-421701a25103,clip,Brazil,USA,False,E,Script / Text,0.413484,India,True,India,True,Nigeria,True
+e2ee5b98-bfa9-4103-aa2c-e0397e9bd668,clip,Brazil,Brazil,True,F,Ritual / Festival,0.621659,Rwanda,True,Rwanda,True,Rwanda,True
+ec1ebd50-a42c-47c5-a77d-00546adf6224,clip,Brazil,USA,False,F,Ritual / Festival,0.513965,India,True,Ethiopia,True,Canada,True
 751a2a0e-916c-48e1-a267-c7c59106d6b0,clip,Brazil,Brazil,True,F,Ritual / Festival,0.334807,Rwanda,True,Rwanda,True,Rwanda,True
 aec29b23-29fa-4d4d-b20c-73e160c63943,clip,Brazil,Rwanda,False,B,Clothing / Dress,0.542702,Nigeria,True,Nigeria,True,Nigeria,True
 035e6a4b-1414-44d6-8b17-8bac0bb64a42,clip,Brazil,Brazil,True,D,Food / Objects,0.997902,Brazil,False,Brazil,False,Brazil,False
-daef26fc-191a-476a-a883-66c9dad9f963,clip,Brazil,USA,False,A,National Symbols,0.38022,Iran,True,Germany,True,Germany,True
+daef26fc-191a-476a-a883-66c9dad9f963,clip,Brazil,USA,False,A,National Symbols,0.38022,Nigeria,True,Nigeria,True,Brazil,True
 f8d29900-ef57-4a37-93ee-d6596f54b8b0,clip,Brazil,Brazil,True,A,National Symbols,0.607469,Brazil,False,Brazil,False,Brazil,False
-449dd4e6-c146-4c46-a36f-506b0669f056,clip,Brazil,USA,False,H,Appearance,0.672227,India,True,India,True,Nigeria,True
-b6a921ff-8d0c-41e1-8a6a-f9f1068693ee,clip,Brazil,Brazil,True,H,Appearance,0.557069,Nigeria,True,Nigeria,True,Nigeria,True
+449dd4e6-c146-4c46-a36f-506b0669f056,clip,Brazil,USA,False,H,Appearance,0.672227,Rwanda,True,Rwanda,True,Rwanda,True
+b6a921ff-8d0c-41e1-8a6a-f9f1068693ee,clip,Brazil,Brazil,True,H,Appearance,0.557069,Nigeria,True,Rwanda,True,Nigeria,True
 7b652a5a-c293-42d8-9245-c3e1556636c1,clip,Rwanda,Ethiopia,False,B,Clothing / Dress,0.969859,Ethiopia,False,Ethiopia,False,Ethiopia,False
 a13fc28b-003a-4e28-8850-905313634459,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.837258,Rwanda,False,Rwanda,False,Rwanda,False
-693a728d-e9d9-4d50-a6c8-c38a7d8dce35,clip,Rwanda,Rwanda,True,F,Ritual / Festival,0.403855,Nigeria,True,Nigeria,True,Nigeria,True
-843b1217-b7f6-4c73-9d38-0eac63bf6f28,clip,Rwanda,USA,False,H,Appearance,0.574181,Nigeria,True,Nigeria,True,Nigeria,True
+693a728d-e9d9-4d50-a6c8-c38a7d8dce35,clip,Rwanda,Rwanda,True,F,Ritual / Festival,0.403855,Rwanda,False,Nigeria,True,Nigeria,True
+843b1217-b7f6-4c73-9d38-0eac63bf6f28,clip,Rwanda,USA,False,H,Appearance,0.574181,Nigeria,True,Brazil,True,India,True
 2a57f463-0a45-4852-9a58-acbf91395812,clip,Rwanda,Rwanda,True,H,Appearance,0.944511,Nigeria,True,Nigeria,True,Nigeria,True
-3fd7af11-b663-486b-a962-16c72d01e706,clip,Rwanda,USA,False,C,Architecture,0.504121,Rwanda,True,Rwanda,True,Rwanda,True
+3fd7af11-b663-486b-a962-16c72d01e706,clip,Rwanda,USA,False,C,Architecture,0.504121,Rwanda,True,Brazil,True,Germany,True
 a952f9e8-5281-4661-950e-ffbf264a69f2,clip,Rwanda,Rwanda,True,H,Appearance,0.471005,Ethiopia,True,Ethiopia,True,Ethiopia,True
-d83a91b8-849b-4f7f-8c8e-168734417cd3,clip,Rwanda,Rwanda,True,D,Food / Objects,0.729531,Rwanda,False,Rwanda,False,Rwanda,False
-ae3e7c2c-7bd7-4086-93d8-14c1f86a3184,clip,Rwanda,Iran,False,D,Food / Objects,0.998748,India,True,Nigeria,True,Ethiopia,True
+d83a91b8-849b-4f7f-8c8e-168734417cd3,clip,Rwanda,Rwanda,True,D,Food / Objects,0.729531,Ethiopia,True,Rwanda,False,Ethiopia,True
+ae3e7c2c-7bd7-4086-93d8-14c1f86a3184,clip,Rwanda,Iran,False,D,Food / Objects,0.998748,India,True,Ethiopia,True,Ethiopia,True
 03e3c931-426c-454a-a977-1805f7c65f15,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.672872,Rwanda,False,Rwanda,False,Rwanda,False
-2ee2ff8e-8560-4eb9-b869-6ba468258201,clip,Rwanda,Brazil,False,D,Food / Objects,0.571702,Rwanda,True,Rwanda,True,Rwanda,True
-b0cbe990-43cc-45a9-9f98-ab8a0a38fe64,clip,Rwanda,Rwanda,True,D,Food / Objects,0.698691,Rwanda,False,Rwanda,False,Rwanda,False
+2ee2ff8e-8560-4eb9-b869-6ba468258201,clip,Rwanda,Brazil,False,D,Food / Objects,0.571702,Rwanda,True,Rwanda,True,Brazil,False
+b0cbe990-43cc-45a9-9f98-ab8a0a38fe64,clip,Rwanda,Rwanda,True,D,Food / Objects,0.698691,Ethiopia,True,Ethiopia,True,Ethiopia,True
 ab6ac2e8-bdfc-452f-8119-914e40e8b151,clip,Rwanda,Rwanda,True,D,Food / Objects,0.451392,Rwanda,False,Rwanda,False,Rwanda,False
 16ff40c1-2e0d-4207-992b-7ff20edf427a,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.398857,Nigeria,True,Ethiopia,True,Ethiopia,True
 eed6d393-d438-4d10-8782-d5443e9342be,clip,Rwanda,Nigeria,False,D,Food / Objects,0.785517,Nigeria,False,Nigeria,False,Nigeria,False
@@ -239,29 +239,29 @@ b6b1e4ca-d9e8-4d54-a292-82c2bf818d3b,clip,Rwanda,Rwanda,True,D,Food / Objects,0.
 7fa37c8c-5b74-4898-ba37-a0c2933cdb03,clip,Rwanda,USA,False,D,Food / Objects,0.559895,Rwanda,True,Rwanda,True,Rwanda,True
 a8e28ea4-0eac-497a-b894-1e682ef66e8e,clip,Rwanda,Brazil,False,G,Natural Landscape,0.830853,Rwanda,True,Rwanda,True,Rwanda,True
 39456870-dff9-4521-85a7-8ce1e1156572,clip,Rwanda,Germany,False,H,Appearance,0.458098,Ethiopia,True,Ethiopia,True,Ethiopia,True
-d501d03b-8677-427a-bd3c-80ef26349cf6,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.504315,Rwanda,False,Rwanda,False,Ethiopia,True
+d501d03b-8677-427a-bd3c-80ef26349cf6,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.504315,Rwanda,False,Ethiopia,True,Ethiopia,True
 f7c40fe4-ac32-46c5-922c-89e85b650906,clip,Rwanda,Rwanda,True,B,Clothing / Dress,0.40151,Nigeria,True,Nigeria,True,Nigeria,True
-1192021a-598b-48bb-be52-9f576e627384,clip,Rwanda,Rwanda,True,H,Appearance,0.988627,Nigeria,True,Nigeria,True,Nigeria,True
-86ea271d-4352-4963-80a2-96b496b9ab50,clip,Rwanda,Rwanda,True,H,Appearance,0.62912,Ethiopia,True,Ethiopia,True,Rwanda,False
+1192021a-598b-48bb-be52-9f576e627384,clip,Rwanda,Rwanda,True,H,Appearance,0.988627,Nigeria,True,Ethiopia,True,Ethiopia,True
+86ea271d-4352-4963-80a2-96b496b9ab50,clip,Rwanda,Rwanda,True,H,Appearance,0.62912,Ethiopia,True,Nigeria,True,Rwanda,False
 9ade2c60-6dfc-4eaf-bfc4-f317af15ac60,clip,Rwanda,Rwanda,True,A,National Symbols,0.923067,Rwanda,False,Rwanda,False,Rwanda,False
 ff0bce0b-7179-486e-9d05-9efa37b21512,clip,Germany,Germany,True,C,Architecture,0.568777,Germany,False,Germany,False,Germany,False
 e6e586b2-3904-40e5-8fcd-0e8201909ad0,clip,Germany,Canada,False,F,Ritual / Festival,0.450583,USA,True,USA,True,USA,True
 dd47b69e-013f-4997-9504-4d2e8a37342d,clip,Germany,Germany,True,D,Food / Objects,0.412503,Germany,False,Germany,False,Germany,False
-b3d8b8f5-af2a-416e-b0ff-deaa2a94d8e5,clip,Germany,Canada,False,D,Food / Objects,0.350244,Rwanda,True,Nigeria,True,Nigeria,True
+b3d8b8f5-af2a-416e-b0ff-deaa2a94d8e5,clip,Germany,Canada,False,D,Food / Objects,0.350244,Nigeria,True,Nigeria,True,Canada,False
 82215031-0639-473d-8f9c-7c9de723779d,clip,Germany,Germany,True,C,Architecture,0.776505,Germany,False,Germany,False,Germany,False
-39733d4c-5b90-473a-b873-d62f74e809fa,clip,Germany,Germany,True,D,Food / Objects,0.462074,Nigeria,True,Nigeria,True,Nigeria,True
+39733d4c-5b90-473a-b873-d62f74e809fa,clip,Germany,Germany,True,D,Food / Objects,0.462074,Nigeria,True,Iran,True,Iran,True
 bcc78c9f-680f-41a8-959a-b71924fe3835,clip,Germany,Germany,True,D,Food / Objects,0.988838,Germany,False,Germany,False,Germany,False
-e3ca3318-1490-4d72-bed8-d9c1813ed430,clip,Germany,Germany,True,D,Food / Objects,0.878921,Germany,False,Germany,False,Germany,False
-e59b1cbd-2cfd-428a-b1f4-fba8cbfb08ec,clip,Germany,Germany,True,D,Food / Objects,0.989873,Germany,False,Germany,False,Germany,False
-cc3e4687-4fba-4fe1-aeb3-489db832865c,clip,Germany,Germany,True,D,Food / Objects,0.982456,Germany,False,Iran,True,India,True
+e3ca3318-1490-4d72-bed8-d9c1813ed430,clip,Germany,Germany,True,D,Food / Objects,0.878921,Germany,False,Germany,False,Rwanda,True
+e59b1cbd-2cfd-428a-b1f4-fba8cbfb08ec,clip,Germany,Germany,True,D,Food / Objects,0.989873,Germany,False,Brazil,True,Brazil,True
+cc3e4687-4fba-4fe1-aeb3-489db832865c,clip,Germany,Germany,True,D,Food / Objects,0.982456,Germany,False,Rwanda,True,Germany,False
 31e9a0fd-c1ab-4668-a100-e869e7c36d2e,clip,Germany,Canada,False,C,Architecture,0.987221,USA,True,USA,True,USA,True
-535d82e7-8b5f-4ed4-b186-e458ced4fd32,clip,Germany,Germany,True,F,Ritual / Festival,0.280221,Rwanda,True,Germany,False,Germany,False
+535d82e7-8b5f-4ed4-b186-e458ced4fd32,clip,Germany,Germany,True,F,Ritual / Festival,0.280221,Germany,False,Germany,False,Germany,False
 606aeda1-a002-4666-9cc2-c54b4af0a436,clip,Germany,Rwanda,False,F,Ritual / Festival,0.811495,Germany,True,Germany,True,Germany,True
 b44fddf6-9e94-4b2d-92d6-b64b7047f781,clip,Germany,Germany,True,G,Natural Landscape,0.349209,Germany,False,Germany,False,Germany,False
-02bd886c-af46-4b28-a3b3-939f0185db11,clip,Germany,Canada,False,F,Ritual / Festival,0.996401,Germany,True,Germany,True,Turkey,True
+02bd886c-af46-4b28-a3b3-939f0185db11,clip,Germany,Canada,False,F,Ritual / Festival,0.996401,Germany,True,Turkey,True,Turkey,True
 7e4d2b1e-fa75-443c-92e9-b792125002c6,clip,Germany,Germany,True,D,Food / Objects,0.377948,Germany,False,Germany,False,Germany,False
-8c973562-db40-4319-9dd5-51d83c7f910e,clip,Germany,USA,False,D,Food / Objects,0.841669,Turkey,True,Iran,True,Iran,True
-3f0011f7-0cf3-4ed5-a905-78d71079c3da,clip,Germany,Canada,False,D,Food / Objects,0.543438,USA,True,USA,True,USA,True
+8c973562-db40-4319-9dd5-51d83c7f910e,clip,Germany,USA,False,D,Food / Objects,0.841669,Germany,True,Turkey,True,Turkey,True
+3f0011f7-0cf3-4ed5-a905-78d71079c3da,clip,Germany,Canada,False,D,Food / Objects,0.543438,USA,True,Canada,False,Canada,False
 99a8796e-1be0-40dc-9e07-56df08f021e0,clip,Germany,Germany,True,D,Food / Objects,0.674444,Germany,False,Germany,False,Germany,False
-098b83b9-da89-40a9-a452-bc72698c3740,clip,Germany,Germany,True,D,Food / Objects,0.482395,Germany,False,Germany,False,Rwanda,True
+098b83b9-da89-40a9-a452-bc72698c3740,clip,Germany,Germany,True,D,Food / Objects,0.482395,Germany,False,Germany,False,Ethiopia,True
 ffcd1ddf-ff5a-4f44-90d8-f019b0e5efd1,clip,Germany,Germany,True,H,Appearance,0.793718,Germany,False,Germany,False,Germany,False

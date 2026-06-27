@@ -1,0 +1,21 @@
+Model,True,Predicted as,Count
+CLIP,Nigeria,Rwanda,10
+CLIP,Canada,USA,6
+CLIP,Brazil,USA,6
+CLIP,Ethiopia,Rwanda,6
+CLIP,India,China,5
+Qwen2-VL,Canada,USA,10
+Qwen2-VL,Brazil,USA,7
+Qwen2-VL,Rwanda,Nigeria,7
+Qwen2-VL,Nigeria,India,5
+Qwen2-VL,Germany,USA,5
+InternVL2,Turkey,Brazil,10
+InternVL2,Rwanda,Nigeria,9
+InternVL2,Canada,Brazil,8
+InternVL2,Nigeria,Brazil,8
+InternVL2,Rwanda,Brazil,7
+LLaVA,Nigeria,Brazil,16
+LLaVA,Rwanda,Brazil,11
+LLaVA,Turkey,Brazil,10
+LLaVA,India,Brazil,10
+LLaVA,USA,Canada,9

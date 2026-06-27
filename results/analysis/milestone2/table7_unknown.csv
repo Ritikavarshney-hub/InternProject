@@ -1,0 +1,5 @@
+Model,N unknown,% total,Top facet,Top country
+CLIP,0,0.0,—,—
+Qwen2-VL,7,2.63,rituals,Iran
+InternVL2,1,0.38,rituals,Iran
+LLaVA,1,0.38,rituals,Iran
