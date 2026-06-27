@@ -83,12 +83,6 @@ except:
     pass
 
 # ── prompt ─────────────────────────────────────────────────────────────────────
-"""PROMPT_TEMPLATE = (
-    "[INST] <image>\n"
-    "Which country is most strongly represented in this image?\n"
-    f"Choose exactly one from this list: {country_list_str}\n\n"
-    "Country: [/INST]"
-)"""
 
 PROMPT_TEMPLATE = (
     "[INST] <image>\n"
@@ -102,13 +96,6 @@ PROMPT_TEMPLATE = (
     "[/INST]"
 )
 # ── helpers ────────────────────────────────────────────────────────────────────
-"""def parse_country(text: str, countries: list) -> str | None:
-    Return the first country name found in the generated text.
-    text_lower = text.lower()
-    for c in countries:
-        if c.lower() in text_lower:
-            return c
-    return None"""
 
 def parse_country(text: str, countries: list) -> str | None:
     text_lower = text.lower().strip()
@@ -134,19 +121,82 @@ def parse_country(text: str, countries: list) -> str | None:
 
     return None
 
+import torch.nn.functional as F
 
-def first_token_confidence(scores_step0, tokenizer, countries: list) -> dict:
+def sequence_confidence(
+    model,
+    processor,
+    image,
+    prompt,
+    countries,
+):
     """
-    scores_step0: logit tensor of shape (vocab_size,) from the first decode step.
-    Returns {country: probability} using softmax over candidate first tokens.
+    Returns
+
+    {
+        country: probability
+    }
+
+    computed from complete sequence log probabilities.
     """
-    first_ids = [
-        tokenizer.encode(c, add_special_tokens=False)[0]
-        for c in countries
-    ]
-    logits = scores_step0[first_ids]
-    probs  = torch.softmax(logits, dim=0).cpu().float().numpy()
-    return {c: float(p) for c, p in zip(countries, probs)}
+
+    scores = []
+
+    for country in countries:
+
+        full_prompt = (
+            prompt + " " + country
+        )
+
+        inputs = processor(
+            text=full_prompt,
+            images=image,
+            return_tensors="pt",
+        )
+
+        inputs = {
+            k: v.to("cuda")
+            for k, v in inputs.items()
+        }
+
+        with torch.no_grad():
+
+            outputs = model(
+                **inputs
+            )
+
+        logits = outputs.logits
+
+        labels = inputs["input_ids"]
+
+        shift_logits = logits[:, :-1, :]
+        shift_labels = labels[:, 1:]
+
+        log_probs = F.log_softmax(
+            shift_logits,
+            dim=-1
+        )
+
+        token_log_probs = log_probs.gather(
+            -1,
+            shift_labels.unsqueeze(-1)
+        ).squeeze(-1)
+
+        score = token_log_probs.sum()
+
+        scores.append(score)
+
+    scores = torch.stack(scores)
+
+    probs = torch.softmax(
+        scores,
+        dim=0
+    ).cpu().numpy()
+
+    return {
+        c: float(p)
+        for c, p in zip(countries, probs)
+    }
 
 
 # ── filter dataset ─────────────────────────────────────────────────────────────
@@ -189,8 +239,8 @@ for i, row in enumerate(sample):
        f"raw output: {repr(generated_text)}" )
        pred_country = "UNKNOWN"
 
-    # confidence from first-token logits
-    conf_dict   = first_token_confidence(out.scores[0][0], processor.tokenizer, countries)
+    # confidence from sequence log probabilities
+    conf_dict   = sequence_confidence(model, processor, image, PROMPT_TEMPLATE, countries)
     confidence  = conf_dict.get(pred_country, 0.0)
 
     results.append({

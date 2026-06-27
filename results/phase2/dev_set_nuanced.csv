@@ -1,11 +1,11 @@
 u_id,true_country,facet,category_primary,category_name,category_score,label_confident,pred_country_orig,correct_orig,changed_k20,category_score
 ae3e7c2c-7bd7-4086-93d8-14c1f86a3184,Rwanda,traditions,D,D_food,0.998748,True,Iran,False,True,0.998748
+34057f2e-1376-4a8d-92f0-6edc0ffa859b,Iran,drink,D,D_food,0.997413,True,Iran,True,True,0.997413
 02bd886c-af46-4b28-a3b3-939f0185db11,Germany,rituals,F,F_ritual,0.996401,True,Canada,False,True,0.996401
-b577985c-6eca-41d4-805c-13fdb8822df8,India,rituals,F,F_ritual,0.995475,True,India,True,True,0.995475
 b5ddf9ce-952d-4fe5-a878-b1ffe90ff1ef,Canada,rituals,C,C_architecture,0.995328,True,USA,False,True,0.995328
 c67a3887-7cf3-4455-8122-e60eedd643a7,Turkey,clothing,B,B_clothing,0.992333,True,Turkey,True,True,0.992333
+13f37320-7bb5-4232-9bf2-8f28c57c4582,USA,food,D,D_food,0.991723,True,USA,True,True,0.991723
 96037b83-81d6-4de0-ac58-e2ea3f1d0f68,China,rituals,F,F_ritual,0.99051,True,Brazil,False,True,0.99051
+e59b1cbd-2cfd-428a-b1f4-fba8cbfb08ec,Germany,food,D,D_food,0.989873,True,Germany,True,True,0.989873
+4c169dc1-0511-4867-803b-2c5724589072,China,rituals,D,D_food,0.989293,True,China,True,True,0.989293
 2b514973-2195-4908-8bda-3f958deb8bdb,Turkey,food,D,D_food,0.988408,True,Iran,False,True,0.988408
-31e9a0fd-c1ab-4668-a100-e869e7c36d2e,Germany,rituals,C,C_architecture,0.987221,True,Canada,False,True,0.987221
-5db4404d-6fd6-4ebd-ad5f-15c8be7344d5,China,food,D,D_food,0.984139,True,China,True,True,0.984139
-cc3e4687-4fba-4fe1-aeb3-489db832865c,Germany,food,D,D_food,0.982456,True,Germany,True,True,0.982456

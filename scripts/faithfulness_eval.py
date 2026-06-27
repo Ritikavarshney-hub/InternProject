@@ -216,6 +216,7 @@ def run_qwen2vl(sample_ids, id_to_image, countries):
         msgs  = [{"role": "user", "content": [{"type": "image", "image": image},
                                                {"type": "text",  "text": q_text}]}]
         text  = processor.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+        print(f"    [{idx}/{len(sample_ids)}]  {u_id}  {text[:60]}..."  )
         ii, vi = process_vision_info(msgs)
         inp = processor(text=[text], images=ii, videos=vi if vi else None,
                         return_tensors="pt", padding=True)
@@ -230,7 +231,7 @@ def run_qwen2vl(sample_ids, id_to_image, countries):
             for k, v in inp.items()
         }
         with torch.no_grad():
-            out = model.generate(**inp, max_new_tokens=20, do_sample=False)
+            out = model.generate(**inp, max_new_tokens=50, do_sample=False)
         n   = inp["input_ids"].shape[-1]
         txt = processor.tokenizer.decode(out[0][n:].cpu(), skip_special_tokens=True).strip()
         pred, cues = parse_response(txt, countries)
@@ -460,7 +461,6 @@ def _plot(summary_path: str, baseline: float):
     plt.savefig(fig_path, dpi=130, bbox_inches="tight")
     plt.close()
     print(f"Plot → {fig_path}")
-
 
 if __name__ == "__main__":
     main()

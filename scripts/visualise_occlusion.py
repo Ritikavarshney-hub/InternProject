@@ -23,7 +23,7 @@ OCC_DIR = os.path.join(
 OUT_DIR = os.path.join(
     PROJECT_ROOT,
     "results",
-    "heatmaps"
+    "occlusion_heatmaps"
 )
 
 os.makedirs(OUT_DIR, exist_ok=True)

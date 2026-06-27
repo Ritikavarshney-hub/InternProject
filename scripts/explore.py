@@ -3,14 +3,11 @@ import pandas as pd
 import os
 
 os.makedirs("../results", exist_ok=True)
-ds = load_from_disk("../data/CulturalVQA")
+dataset_path = "/DATA/bt24eee096/cultural_vlm/data/CulturalVQA/test"
+ds = load_from_disk(dataset_path)
 
-print(ds)
-
-# check splits
-print(ds.keys())
-
-df = ds["test"].to_pandas()
+# Convert to DataFrame
+df = ds.to_pandas()
 
 print("\nColumns:")
 print(df.columns)
@@ -28,11 +25,16 @@ print("\nTotal images:")
 print(len(df))
 
 print("\nCountry x Facet:")
-print(pd.crosstab(df["country"], ["facet"]))
+print(pd.crosstab(df["country"], df["facet"]))
+
 facet_props = pd.crosstab(
     df["country"],
     df["facet"],
     normalize="index"
 )
 
+print("\nFacet proportions by country:")
+print(facet_props)
+
+print("\nCounts by country and facet:")
 print(df.groupby(["country", "facet"]).size())

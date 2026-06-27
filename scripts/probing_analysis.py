@@ -122,16 +122,25 @@ def extract_llava_hidden_states(
 
     # Vision encoder hidden states (optional — heavier)
     if include_vision:
-        vision_tower = model.model.vision_tower
-        vis_inputs   = processor.image_processor(images=image, return_tensors="pt")
-        vis_inputs   = {k: v.to(device) for k, v in vis_inputs.items()}
+        vision_tower = model.vision_tower
+        vis_inputs = processor.image_processor(
+            images=image.convert("RGB"),
+            return_tensors="pt",
+        )
+
+        pixel_values = vis_inputs["pixel_values"].to(device)
+        pixel_values = pixel_values.flatten(0, 1)
+
         with torch.no_grad():
-            vis_outputs = vision_tower(**vis_inputs, output_attentions=False,
-                                       output_hidden_states=True, return_dict=True)
+            vis_outputs = model.vision_tower(
+                pixel_values=pixel_values,
+                output_hidden_states=True,
+                return_dict=True,
+            )
         vis_hs = vis_outputs.hidden_states[1:]   # skip embedding layer
         vis_reps = np.stack([
-            h[0].float().mean(dim=0).cpu().numpy()
-            for h in vis_hs
+            h.float().mean(dim=(0, 1)).cpu().numpy()
+            for h in vis_outputs.hidden_states[1:]
         ])
         result["vision"] = vis_reps
 
@@ -147,6 +156,7 @@ def extract_clip_hidden_states(image: Image.Image, device: str) -> np.ndarray:
     model, _, preprocess = open_clip.create_model_and_transforms(
         "ViT-L-14", pretrained="openai"
     )
+    print(model)
     model = model.to(device).eval()
 
     img_t = preprocess(image.convert("RGB")).unsqueeze(0).to(device)
@@ -308,6 +318,7 @@ def main():
         torch_dtype=torch.bfloat16,
         load_in_4bit=True,
     )
+    print(model)
     model.eval()
     print("  LLaVA loaded.")
 

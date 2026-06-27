@@ -1,7 +1,4 @@
 """
-Step 3 — Deletion & Insertion AUC
-Research Proposal §6.6, Metrics 1 & 2
-
 Measures whether occlusion sensitivity maps are CAUSALLY meaningful —
 i.e., the ranked patches actually drive the model's prediction.
 

@@ -1,4 +1,4 @@
 subset,n,pct_committed,mean_commit_layer,median_commit_layer,std_commit_layer,mean_final_prob
 all,266,0.7105,25.16,25.0,7.52,0.3242
-shortcut,49,0.551,27.14,31.0,7.1,0.1756
-nuanced,50,0.78,24.66,25.0,6.52,0.3085
+shortcut,46,0.5652,26.8,30.0,7.36,0.1727
+nuanced,50,0.78,24.72,25.0,7.26,0.2595

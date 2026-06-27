@@ -1,17 +1,15 @@
 """
 Milestone 3c — Attention Rollout (Secondary Attribution Method)
-Research Proposal §6.3: 'hook into all attention layers; propagate attention
-weights forward to obtain a spatial attribution map over image patches'
+Research Proposal §6.3
 
 Applies to ViT-based vision encoders:
-  - CLIP ViT-L/14        (standalone)
+  - CLIP ViT-L/14        (standalone, via HuggingFace CLIPVisionModel)
   - LLaVA-1.6 vision tower (openai/clip-vit-large-patch14-336)
-
-For Qwen2-VL and InternVL2 with dynamic tiling: per-tile rollout is
-implemented; tiles are stitched back using spatial coordinates.
+  - Qwen2-VL (returns uniform map if flash attention is active)
+  - InternVL2-8B (patches naive attention forward)
 
 Output: results/attention_rollout/{u_id}_{model}.npy
-        Shape: (14, 14) float32  — same as occlusion maps for easy comparison.
+        Shape: (14, 14) float32
 
 Usage:
     python attention_rollout.py --model clip
@@ -27,193 +25,112 @@ import gc
 import numpy as np
 import pandas as pd
 import torch
-import torch.nn.functional as F
 from PIL import Image
 from datasets import load_from_disk
+import transformers
+print(transformers.__version__)
 
-from occlusion import (
-    DATASET_PATH, SAMPLE_IDS_CSV, SAMPLE_META_CSV,
-    PRED_CSVS, GRID_SIZE,
-)
+# ── Paths (all absolute — script can be run from any directory) ────────────────
+PROJECT_ROOT    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATASET_PATH    = os.path.join(PROJECT_ROOT, "data", "CulturalVQA")
+SAMPLE_IDS_CSV  = os.path.join(PROJECT_ROOT, "results", "sample_ids.csv")
+SAMPLE_META_CSV = os.path.join(PROJECT_ROOT, "results", "sample_metadata.csv")
+ROLLOUT_DIR     = os.path.join(PROJECT_ROOT, "results", "attention_rollout")
+GRID_SIZE       = 14
 
-ROLLOUT_DIR = os.path.join("results", "attention_rollout")
 
+# ── Core rollout algorithm ────────────────────────────────────────────────────
 
-# ---------------------------------------------------------------------------
-# Core attention rollout algorithm
-# Proposal reference: 'propagate attention weights across all transformer layers'
-# Based on: Abnar & Zuidema (2020) "Quantifying Attention Flow in Transformers"
-# ---------------------------------------------------------------------------
-
-def compute_rollout(attention_maps: list[np.ndarray]) -> np.ndarray:
+def compute_rollout(attention_maps: list) -> np.ndarray:
     """
-    attention_maps:
-        either (heads, seq, seq)
-        or (batch, heads, seq, seq)
-    """
+    attention_maps: list of (heads, seq, seq) or (batch, heads, seq, seq) arrays.
+    Returns: (seq, seq) rollout matrix.
 
+    Algorithm (Abnar & Zuidema 2020):
+      1. Average across heads at each layer.
+      2. Add residual: A_hat = 0.5*A + 0.5*I
+      3. Row-normalise A_hat.
+      4. Multiply layer matrices: rollout = A_hat_L @ ... @ A_hat_1
+    """
     result = None
-
     for attn in attention_maps:
-
-        # Remove batch dimension if present
-        if attn.ndim == 4:
+        if attn.ndim == 4:          # (batch, heads, seq, seq) → drop batch
             attn = attn[0]
-
-        # Average across heads
-        attn_avg = attn.mean(axis=0)      # (seq, seq)
-
-        # Residual connection
-        identity = np.eye(
-            attn_avg.shape[0],
-            dtype=attn_avg.dtype
-        )
-
+        attn_avg = attn.mean(axis=0)                                    # (seq, seq)
+        identity = np.eye(attn_avg.shape[0], dtype=attn_avg.dtype)
         attn_hat = 0.5 * attn_avg + 0.5 * identity
+        row_sums = attn_hat.sum(axis=-1, keepdims=True)
+        attn_hat = attn_hat / np.where(row_sums == 0, 1.0, row_sums)   # safe divide
+        result   = attn_hat if result is None else attn_hat @ result
+    return result   # (seq, seq)
 
-        # Row normalization
-        attn_hat = attn_hat / attn_hat.sum(
-            axis=-1,
-            keepdims=True,
-        )
 
-        result = (
-            attn_hat
-            if result is None
-            else attn_hat @ result
-        )
-
-    return result
-    
-def rollout_to_spatial(rollout: np.ndarray, num_patches: int, grid_size: int = GRID_SIZE) -> np.ndarray:
+def rollout_to_spatial(rollout: np.ndarray, num_patches: int,
+                        grid_size: int = GRID_SIZE) -> np.ndarray:
     """
-    Extract the CLS → patch attention from the rollout matrix and reshape to (grid_size, grid_size).
-
-    rollout shape: (1 + num_patches, 1 + num_patches)  where index 0 = CLS token.
-    Returns (grid_size, grid_size) map.
+    Extract CLS→patch row from rollout and reshape to (grid_size, grid_size).
+    rollout shape: (1 + num_patches, 1 + num_patches), index 0 = CLS token.
     """
-    # Row 0 = CLS token attention to all other tokens; columns 1: = patch tokens
-    cls_to_patches = rollout[0, 1:]                            # (num_patches,)
-    # Normalise to [0, 1]
-    cls_to_patches = cls_to_patches - cls_to_patches.min()
-    if cls_to_patches.max() > 0:
-        cls_to_patches /= cls_to_patches.max()
-    # Reshape to spatial grid
+    cls_to_patches = rollout[0, 1:].copy()   # (num_patches,)
+    mn = cls_to_patches.min()
+    mx = cls_to_patches.max()
+    if mx > mn:
+        cls_to_patches = (cls_to_patches - mn) / (mx - mn)
     h = w = int(num_patches ** 0.5)
     spatial = cls_to_patches.reshape(h, w)
-    # Resize to target grid_size if needed
     if h != grid_size:
-        spatial_img = Image.fromarray(spatial.astype(np.float32))
-        spatial = np.array(spatial_img.resize((grid_size, grid_size), Image.BILINEAR))
+        spatial = np.array(
+            Image.fromarray(spatial.astype(np.float32))
+                 .resize((grid_size, grid_size), Image.BILINEAR),
+            dtype=np.float32,
+        )
     return spatial.astype(np.float32)
 
 
-# ---------------------------------------------------------------------------
-# CLIP Attention Rollout
-# ---------------------------------------------------------------------------
+# ── Model loaders (called ONCE before the image loop) ─────────────────────────
 
-def clip_attention_rollout(image: Image.Image, device: str, grid_size: int = GRID_SIZE) -> np.ndarray:
+def load_clip():
     """
-    Hook into all ViT attention layers of CLIP ViT-L/14.
-    ViT-L/14 has 24 transformer blocks, each with 16 heads, 257 tokens (1 CLS + 256 patches = 16×16).
-    We resize to GRID_SIZE afterwards.
-    """
-    import open_clip
-
-    model, _, preprocess = open_clip.create_model_and_transforms(
-        "ViT-L-14", pretrained="openai"
-    )
-    model = model.to(device).eval()
-
-    attention_maps = []
-    hooks = []
-
-    def make_hook(layer_idx):
-        def hook(module, input, output):
-            # output is the attention weight tensor: (batch, heads, seq, seq)
-            attention_maps.append(output.detach().cpu().numpy()[0])   # (heads, seq, seq)
-        return hook
-
-    # Register hooks on each transformer block's attention module
-    for i, block in enumerate(model.visual.transformer.resblocks):
-        h = block.attn.register_forward_hook(make_hook(i))
-        hooks.append(h)
-
-    img_t = preprocess(image).unsqueeze(0).to(device)
-    with torch.no_grad():
-        model.encode_image(img_t)
-
-    for h in hooks:
-        h.remove()
-
-    # CLIP ViT-L/14 at 224px: 16×16 = 256 patches + 1 CLS = 257 tokens
-    # (At 336px used by LLaVA, patch num is 576 + 1 CLS = 577)
-    num_patches = attention_maps[0].shape[-1] - 1
-    rollout = compute_rollout(attention_maps)
-    return rollout_to_spatial(rollout, num_patches, grid_size)
-
-
-# ---------------------------------------------------------------------------
-# LLaVA-1.6 Attention Rollout (vision encoder only)
-# ---------------------------------------------------------------------------
-
-def llava_attention_rollout(image: Image.Image, device: str, grid_size: int = GRID_SIZE) -> np.ndarray:
-    """
-    Hooks into the CLIP ViT vision tower inside LLaVA-1.6.
-    Vision tower: openai/clip-vit-large-patch14-336 → 24 blocks, 577 tokens (1+576 at 336px).
+    Load CLIP via HuggingFace CLIPVisionModel.
+    output_attentions=True makes every layer return its attention weight matrix.
+    This is correct — do NOT use open_clip here because open_clip calls
+    nn.MultiheadAttention with need_weights=False, so hooks capture None weights.
     """
     from transformers import CLIPVisionModel, CLIPImageProcessor
+    processor = CLIPImageProcessor.from_pretrained("openai/clip-vit-large-patch14")
+    model     = CLIPVisionModel.from_pretrained(
+        "openai/clip-vit-large-patch14", output_attentions=True
+    ).eval()
+    return model, processor
 
-    vision_model = CLIPVisionModel.from_pretrained(
-        "openai/clip-vit-large-patch14-336",
-        output_attentions=True,
-    ).to(device).eval()
+
+def load_llava():
+    """LLaVA-1.6 vision tower = CLIP ViT-L/14-336."""
+    from transformers import CLIPVisionModel, CLIPImageProcessor
     processor = CLIPImageProcessor.from_pretrained("openai/clip-vit-large-patch14-336")
-
-    inputs = processor(images=image, return_tensors="pt").to(device)
-    with torch.no_grad():
-        outputs = vision_model(**inputs, output_attentions=True)
-
-    # outputs.attentions: tuple of (1, heads, seq, seq) per layer
-    attn_maps = [a[0].cpu().numpy() for a in outputs.attentions]  # each: (heads, seq, seq)
-    num_patches = attn_maps[0].shape[-1] - 1
-    rollout = compute_rollout(attn_maps)
-    return rollout_to_spatial(rollout, num_patches, grid_size)
+    model     = CLIPVisionModel.from_pretrained(
+        "openai/clip-vit-large-patch14-336", output_attentions=True
+    ).eval()
+    return model, processor
 
 
-# ---------------------------------------------------------------------------
-# Qwen2-VL Attention Rollout (per-tile, then stitch)
-# Proposal §6.3: 'for dynamic tiling: apply per tile, stitch using tile coordinates'
-# ---------------------------------------------------------------------------
-
-def qwen2vl_attention_rollout(image: Image.Image, device: str, grid_size: int = GRID_SIZE) -> np.ndarray:
+def load_qwen2vl():
     """
-    Attention rollout for Qwen2-VL's visual encoder.
-
-    Architecture notes:
-      - model.visual  = Qwen2VisionTransformerPretrainedModel (the vision encoder)
-      - model.visual.blocks[i]      = each transformer block
-      - model.visual.blocks[i].attn = the attention module (NOT .self_attn)
-      - Encoder is called as: model.visual(pixel_values, grid_thw=image_grid_thw)
-        where image_grid_thw tells the encoder tile layout for RoPE position IDs
-
-    Qwen2-VL may use flash attention (no explicit weight matrix returned).
-    The hook checks if out[1] carries weights; if all hooks yield nothing,
-    returns a uniform map (attention not accessible without recompilation).
-
-    Model loading mirrors predict_qwen2vl.py:
-      BitsAndBytesConfig(bfloat16) + device_map="auto"
-      (float16 + load_in_4bit corrupts outputs — confirmed bug in predict scripts)
+    IMPORTANT: attn_implementation="eager" is required.
+    Qwen2-VL defaults to flash_attention_2, which never materialises the
+    explicit attention weight matrix — hooks capture nothing and the rollout
+    returns a constant uniform map (observed as max_score ≈ 0.051 for every
+    image regardless of content).  "eager" forces standard scaled-dot-product
+    attention so the hooks can capture real attention weights.
     """
     from transformers import AutoProcessor, Qwen2VLForConditionalGeneration, BitsAndBytesConfig
-    from qwen_vl_utils import process_vision_info
-
+    from qwen_vl_utils import process_vision_info   # noqa — imported here to verify
     processor = AutoProcessor.from_pretrained(
         "Qwen/Qwen2-VL-7B-Instruct",
         min_pixels=256 * 28 * 28,
         max_pixels=1280 * 28 * 28,
     )
-    bnb_config = BitsAndBytesConfig(
+    bnb = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_compute_dtype=torch.bfloat16,
         bnb_4bit_use_double_quant=True,
@@ -221,21 +138,68 @@ def qwen2vl_attention_rollout(image: Image.Image, device: str, grid_size: int = 
     )
     model = Qwen2VLForConditionalGeneration.from_pretrained(
         "Qwen/Qwen2-VL-7B-Instruct",
-        quantization_config=bnb_config,
+        quantization_config=bnb,
         torch_dtype=torch.bfloat16,
         device_map="auto",
-    )
-    model.eval()
-    for name, module in model.named_modules():
-        if "vision" in name.lower() or "visual" in name.lower():
-            print(name, type(module))
+        attn_implementation="eager",   # ← disables flash attention so hooks get weights
+    ).eval()
+    return model, processor
 
-    # Build messages to use process_vision_info (correct Qwen2-VL image pipeline)
+
+def load_internvl2():
+    """
+    Full bfloat16 on single GPU — matches predict_internvl2_backup.py.
+    BitsAndBytesConfig + device_map="auto" causes cross-device scatter errors.
+    """
+    import torchvision.transforms as T
+    from torchvision.transforms.functional import InterpolationMode
+    from transformers import AutoModel
+
+    transform = T.Compose([
+        T.Lambda(lambda img: img.convert("RGB")),
+        T.Resize((448, 448), interpolation=InterpolationMode.BICUBIC),
+        T.ToTensor(),
+        T.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
+    ])
+    model = AutoModel.from_pretrained(
+        "OpenGVLab/InternVL2-8B",
+        torch_dtype=torch.bfloat16,
+        trust_remote_code=True,
+    ).cuda().eval()
+    return model, transform
+
+
+# ── Per-image rollout functions (model already loaded) ─────────────────────────
+
+def clip_rollout_single(image: Image.Image, model, processor,
+                         device: str, grid_size: int) -> np.ndarray:
+    inputs = processor(images=image, return_tensors="pt").to(device)
+    with torch.no_grad():
+        out = model(**inputs,output_attentions=True)
+    # out.attentions: tuple of (1, n_heads, seq, seq) per layer
+    attn_maps   = [a[0].cpu().numpy() for a in out.attentions]
+    num_patches = attn_maps[0].shape[-1] - 1
+    rollout     = compute_rollout(attn_maps)
+    return rollout_to_spatial(rollout, num_patches, grid_size)
+
+
+def llava_rollout_single(image: Image.Image, model, processor,
+                          device: str, grid_size: int) -> np.ndarray:
+    # Identical pipeline to CLIP — both use CLIPVisionModel
+    return clip_rollout_single(image, model, processor, device, grid_size)
+
+
+def qwen2vl_rollout_single(image: Image.Image, model, processor,
+                            device: str, grid_size: int) -> np.ndarray:
+    from qwen_vl_utils import process_vision_info
+
     messages = [{"role": "user", "content": [
         {"type": "image", "image": image.convert("RGB")},
-        {"type": "text",  "text": "Describe the image."},
+        {"type": "text",  "text": "Describe."},
     ]}]
-    text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    text = processor.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True
+    )
     image_inputs, video_inputs = process_vision_info(messages)
     inputs = processor(
         text=[text],
@@ -244,204 +208,173 @@ def qwen2vl_attention_rollout(image: Image.Image, device: str, grid_size: int = 
         return_tensors="pt",
         padding=True,
     )
-
     pixel_values   = inputs["pixel_values"].to("cuda")
     image_grid_thw = inputs.get("image_grid_thw")
     if image_grid_thw is not None:
         image_grid_thw = image_grid_thw.to("cuda")
 
-    # model.visual is the Qwen2VisionTransformerPretrainedModel
-    # model.visual.blocks[i].attn is the attention module
-    vision_enc = model.visual
     attn_maps  = []
-    hooks      = []
-
-    def make_hook():
-        def hook(module, inp, out):
-            # out may be just the attention output tensor (flash attn)
-            # or a tuple (attn_output, attn_weights) for eager attention
-            if isinstance(out, tuple) and len(out) > 1 and out[1] is not None:
-                attn_maps.append(out[1].float().detach().cpu().numpy())
-        return hook
-
-    for block in vision_enc.blocks:
-        hooks.append(block.attn.register_forward_hook(make_hook()))
 
     with torch.no_grad():
-        if image_grid_thw is not None:
-            vision_enc(pixel_values, grid_thw=image_grid_thw)
-        else:
-            vision_enc(pixel_values)
+
+        outputs = model.visual(
+            pixel_values,
+            grid_thw=image_grid_thw,
+            output_attentions=True,
+            return_dict=True,
+        )
+
+        attn_maps = outputs.attentions
 
     for h in hooks:
         h.remove()
 
-    del model
-    gc.collect()
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-
     if not attn_maps:
-        print("[qwen2vl rollout] No attention weights captured (flash attention active). "
-              "Returning uniform map.")
-        return np.ones((grid_size, grid_size), dtype=np.float32) / (grid_size * grid_size)
+        # Flash attention still active despite attn_implementation="eager".
+        # This means the attention module's hook captured nothing.
+        # Check: model was loaded with attn_implementation="eager"?
+        print("[qwen2vl rollout] WARNING: no attention weights captured — "
+              "returning uniform map. Ensure attn_implementation='eager' in load_qwen2vl().")
+        return np.full((grid_size, grid_size),
+                       1.0 / (grid_size * grid_size), dtype=np.float32)
 
-    num_patches = attn_maps[0].shape[-1]   # Qwen2-VL has no CLS token
-    rollout     = compute_rollout(attn_maps)
-    # Without CLS: rollout[0] has no special meaning — average over all tokens
-    spatial = rollout.mean(axis=0)         # (num_patches,)
-    spatial = spatial - spatial.min()
-    if spatial.max() > 0:
-        spatial /= spatial.max()
-    h = w = int(num_patches ** 0.5)
-    if h * w == num_patches:
+    # Qwen2-VL has no CLS token → average over all token positions
+    rollout = compute_rollout(attn_maps)
+    spatial = rollout.mean(axis=0)
+    mn, mx  = spatial.min(), spatial.max()
+    if mx > mn:
+        spatial = (spatial - mn) / (mx - mn)
+    n = len(spatial)
+    h = w = int(n ** 0.5)
+    if h * w == n:
         spatial = spatial.reshape(h, w)
     else:
-        spatial = spatial.reshape(1, -1)   # fallback: 1×N
-    spatial_img = Image.fromarray(spatial.astype(np.float32))
-    return np.array(spatial_img.resize((grid_size, grid_size), Image.BILINEAR)).astype(np.float32)
-
-
-# ---------------------------------------------------------------------------
-# InternVL2-8B Attention Rollout
-# ---------------------------------------------------------------------------
-
-def internvl2_attention_rollout(image: Image.Image, device: str, grid_size: int = GRID_SIZE) -> np.ndarray:
-    """
-    Attention rollout for InternVL2-8B's vision encoder (InternViT).
-
-    Architecture notes:
-      - model.vision_model                        = InternVisionModel
-      - model.vision_model.encoder.layers[i]      = each transformer layer
-      - layer.attention                            = InternAttention (NOT layer.attn)
-      - The attention module returns (attn_output, attn_weights) when
-        output_attentions=True is set on the encoder call
-
-    Model loading: full bfloat16 on single GPU (model.cuda()) — matches
-    predict_internvl2_backup.py which is the confirmed working version.
-    BitsAndBytesConfig + device_map="auto" causes cross-device scatter errors.
-    """
-    from transformers import AutoModel
-    import torchvision.transforms as T
-    from torchvision.transforms.functional import InterpolationMode
-
-    transform = T.Compose([
-        T.Lambda(lambda img: img.convert("RGB")),
-        T.Resize((448, 448), interpolation=InterpolationMode.BICUBIC),
-        T.ToTensor(),
-        T.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
-    ])
-
-    # Full bfloat16, single GPU — matches predict_internvl2_backup.py
-    model = AutoModel.from_pretrained(
-        "OpenGVLab/InternVL2-8B",
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
+        spatial = spatial[:h*w].reshape(h, w)
+    return np.array(
+        Image.fromarray(spatial.astype(np.float32))
+             .resize((grid_size, grid_size), Image.BILINEAR),
+        dtype=np.float32,
     )
-    model = model.cuda()
-    model.eval()
 
-    vision_model = model.vision_model
+
+def internvl2_rollout_single(image: Image.Image, model, transform,
+                              device: str, grid_size: int) -> np.ndarray:
+    """
+    InternVL2 uses InternVisionAttention which may call _naive_attn internally
+    when flash attention is not available.
+
+    Architecture:
+      vision_model.encoder.layers[i].attention      = InternAttention wrapper
+      vision_model.encoder.layers[i].attention.attn = InternVisionAttention (inner)
+
+    We hook the INNER attention module to capture the weight matrix.
+    If InternVisionAttention uses flash attention internally, the hook captures
+    the output tensor only (not weights) — handled via fallback.
+    """
     from types import MethodType
 
+    vision_model   = model.vision_model
+    pixel_values   = transform(image).unsqueeze(0).to("cuda", dtype=torch.bfloat16)
     captured_attns = []
 
     def patched_naive_attn(self, x):
+        """Replaces _naive_attn to capture attention weights."""
         B, N, C = x.shape
-
         qkv = self.qkv(x).reshape(
             B, N, 3, self.num_heads, C // self.num_heads
         ).permute(2, 0, 3, 1, 4)
-
         q, k, v = qkv.unbind(0)
 
-        if self.qk_normalization:
+        if getattr(self, "qk_normalization", False):
             B_, H_, N_, D_ = q.shape
+            q = self.q_norm(q.transpose(1, 2).flatten(-2, -1)).view(B_, N_, H_, D_).transpose(1, 2)
+            k = self.k_norm(k.transpose(1, 2).flatten(-2, -1)).view(B_, N_, H_, D_).transpose(1, 2)
 
-            q = self.q_norm(
-                q.transpose(1, 2).flatten(-2, -1)
-            ).view(B_, N_, H_, D_).transpose(1, 2)
-
-            k = self.k_norm(
-                k.transpose(1, 2).flatten(-2, -1)
-            ).view(B_, N_, H_, D_).transpose(1, 2)
-
-        attn = ((q * self.scale) @ k.transpose(-2, -1))
-        attn = attn.softmax(dim=-1)
-        attn = self.attn_drop(attn)
-
-        # save attention matrix
-        captured_attns.append(
-            attn.float().detach().cpu().numpy()
-        )
+        scale = getattr(self, "scale", (C // self.num_heads) ** -0.5)
+        attn  = (q * scale) @ k.transpose(-2, -1)
+        attn  = attn.softmax(dim=-1)
+        attn  = self.attn_drop(attn)
+        captured_attns.append(attn.float().detach().cpu().numpy())
 
         x = (attn @ v).transpose(1, 2).reshape(B, N, C)
         x = self.proj(x)
         x = self.proj_drop(x)
-
         return x
 
-
+    # Patch _naive_attn on the INNER attention module
+    # InternVisionEncoderLayer → .attention (InternAttention) → .attn (InternVisionAttention)
+    patched = []
     for layer in vision_model.encoder.layers:
-        layer.attn._naive_attn = MethodType(
-            patched_naive_attn,
-            layer.attn,
-        )
-
-    pixel_values = transform(image).unsqueeze(0).to("cuda", dtype=torch.bfloat16)
-
-    
-    # InternVL2 attention is at layer.attention (not layer.attn)
-
-    captured_attns.clear()
+        inner_attn = getattr(layer, "attention", None)
+        if inner_attn is None:
+            continue
+        attn_module = getattr(inner_attn, "attn", None)
+        if attn_module is None:
+            continue
+        if hasattr(attn_module, "_naive_attn"):
+            attn_module._naive_attn = MethodType(patched_naive_attn, attn_module)
+            patched.append(attn_module)
 
     with torch.no_grad():
-        vision_model(pixel_values)
+        vision_model(pixel_values, output_attentions=False)
 
-
-    del model
-    gc.collect()
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
+    # Restore original _naive_attn (not strictly needed since weights are reloaded
+    # per image, but good practice)
+    for attn_module in patched:
+        if hasattr(attn_module.__class__, "_naive_attn"):
+            attn_module._naive_attn = attn_module.__class__._naive_attn
 
     if not captured_attns:
         print("[internvl2 rollout] No attention weights captured. Returning uniform map.")
-        return np.ones((grid_size, grid_size), dtype=np.float32) / (grid_size * grid_size)
+        return np.full((grid_size, grid_size),
+                       1.0 / (grid_size * grid_size), dtype=np.float32)
 
-    # InternVL2 vision encoder: 1 CLS token + num_patches patch tokens
+    # InternVL2 has 1 CLS token
     num_patches = captured_attns[0].shape[-1] - 1
     rollout     = compute_rollout(captured_attns)
     return rollout_to_spatial(rollout, num_patches, grid_size)
 
 
-# ---------------------------------------------------------------------------
-# Runner
-# ---------------------------------------------------------------------------
+# ── Runner ────────────────────────────────────────────────────────────────────
 
-ROLLOUT_FNS = {
-    "clip":      clip_attention_rollout,
-    "llava":     llava_attention_rollout,
-    "qwen2vl":   qwen2vl_attention_rollout,
-    "internvl2": internvl2_attention_rollout,
+LOADERS = {
+    "clip":      load_clip,
+    "llava":     load_llava,
+    "qwen2vl":   load_qwen2vl,
+    "internvl2": load_internvl2,
+}
+
+SINGLE_FNS = {
+    "clip":      clip_rollout_single,
+    "llava":     llava_rollout_single,
+    "qwen2vl":   qwen2vl_rollout_single,
+    "internvl2": internvl2_rollout_single,
 }
 
 
 def run_rollout(model_name: str, pilot: bool = False, grid_size: int = GRID_SIZE):
     os.makedirs(ROLLOUT_DIR, exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Attention Rollout | model={model_name} | device={device} | grid={grid_size}x{grid_size}")
+    print(f"Attention Rollout | model={model_name} | device={device} | grid={grid_size}×{grid_size}")
 
     sample_ids = pd.read_csv(SAMPLE_IDS_CSV)["u_id"].tolist()
     if pilot:
         sample_ids = sample_ids[:20]
-        print(f"Pilot mode: running on first {len(sample_ids)} images.")
+        print(f"Pilot mode: {len(sample_ids)} images.")
 
-    ds     = load_from_disk(DATASET_PATH)["test"]
-    id_set = set(sample_ids)
-    subset = ds.filter(lambda x: x["u_id"] in id_set)
+    # ── Load model ONCE before the loop ────────────────────────────────────────
+    print(f"Loading {model_name}...")
+    model_obj, aux = LOADERS[model_name]()
+    # Move non-quantized models to device
+    if model_name in ("clip", "llava"):
+        model_obj = model_obj.to(device)
+    print(f"  Model loaded.")
 
-    rollout_fn = ROLLOUT_FNS[model_name]
-    processed = skipped = 0
+    single_fn  = SINGLE_FNS[model_name]
+    ds         = load_from_disk(DATASET_PATH)["test"]
+    id_set     = set(sample_ids)
+    subset     = ds.filter(lambda x: x["u_id"] in id_set)
+    processed  = skipped = errors = 0
 
     for row in subset:
         u_id     = row["u_id"]
@@ -451,24 +384,29 @@ def run_rollout(model_name: str, pilot: bool = False, grid_size: int = GRID_SIZE
             skipped += 1
             continue
 
-        spatial = rollout_fn(row["image"], device, grid_size=grid_size)
-        np.save(out_path, spatial)
-        processed += 1
-        print(f"[{processed}] {u_id} | max={spatial.max():.4f} | saved")
+        try:
+            spatial = single_fn(row["image"], model_obj, aux, device, grid_size)
+            np.save(out_path, spatial)
+            processed += 1
+            print(f"  [{processed}] {u_id} | max={spatial.max():.4f} | saved")
+        except Exception as e:
+            errors += 1
+            print(f"  [ERROR] {u_id}: {e}")
 
-        # Release VRAM between images for large models
-        gc.collect()
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
+    # Free VRAM
+    del model_obj
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
-    print(f"\nDone. Saved: {processed} | Skipped: {skipped}")
+    print(f"\nDone. Saved: {processed} | Skipped: {skipped} | Errors: {errors}")
     print(f"Output: {ROLLOUT_DIR}/")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Milestone 3c — Attention Rollout")
-    parser.add_argument("--model",  choices=list(ROLLOUT_FNS.keys()), required=True)
-    parser.add_argument("--pilot",  action="store_true", help="Run on first 20 images only.")
+    parser.add_argument("--model",  choices=list(LOADERS.keys()), required=True)
+    parser.add_argument("--pilot",  action="store_true")
     parser.add_argument("--grid",   type=int, default=GRID_SIZE)
     args = parser.parse_args()
     run_rollout(args.model, pilot=args.pilot, grid_size=args.grid)
